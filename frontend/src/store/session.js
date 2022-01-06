@@ -40,6 +40,22 @@ export const restore = () => async(dispatch) => {
   dispatch(setUser(data.user));
 }
 
+// thunk action for POST /api/users to sign up a user
+export const signup = (user) => async(dispatch) => {
+  const { username, email, password } = user;
+  const response = await csrfFetch('/api/users', {
+    method: 'POST',
+    body: JSON.stringify({
+      email,
+      username,
+      password
+    })
+  });
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+}
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
