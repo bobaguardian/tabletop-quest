@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { setTokenCookie } = require('../../utils/auth');
+const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const { Router } = require('express');
 
@@ -31,6 +31,13 @@ router.delete('/', (_req, res) => {
   return res.json({ message: 'success' });
 });
 
-
+// Restore session user - will return session user as JSON as key user
+// if there is no session, return JSON empty object
+router.get('/', restoreUser, (req, res) => {
+  const { user } = req;
+  if (user) {
+    return res.json({ user: user.toSafeObject() });
+  } else return res.json({});
+});
 
 module.exports = router;
