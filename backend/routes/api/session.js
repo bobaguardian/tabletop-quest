@@ -3,6 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
+const { Router } = require('express');
 
 const router = express.Router();
 
@@ -22,7 +23,14 @@ router.post('/', asyncHandler(async (req, res, next) => {
 
   await setTokenCookie(res, user);
   return res.json({ user });
-
 }));
+
+// Log out
+router.delete('/', (_req, res) => {
+  res.clearCookie('token');
+  return res.json({ message: 'success' });
+});
+
+
 
 module.exports = router;
