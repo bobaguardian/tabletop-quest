@@ -1,1 +1,9 @@
 /* TODO Add site wide styles */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+}

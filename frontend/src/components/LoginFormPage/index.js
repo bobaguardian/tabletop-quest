@@ -26,32 +26,39 @@ const LoginFormPage = () => {
   }
 
   return (
-    <div>
+    <div id="login-div">
       <h1> Log In Form </h1>
-      <form onSubmit={handleSubmit}>
+      <form id="login-form" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <label>
-          Email
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            type="email"
-            placeholder='someemail@email.com'
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            type="password"
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
+        <div className='form-ele'>
+          <label htmlFor='email'>
+            Email
+          </label>
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              type="email"
+              placeholder='someemail@email.com'
+              required
+              id="email"
+            />
+        </div>
+
+        <div className='form-ele'>
+          <label htmlFor='password'>
+            Password
+          </label>
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              type="password"
+              required
+              id="password"
+            />
+        </div>
+        <button className='form-ele' type="submit">Log In</button>
       </form>
     </div>
   );
