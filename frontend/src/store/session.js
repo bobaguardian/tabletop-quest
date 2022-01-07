@@ -56,6 +56,16 @@ export const signup = (user) => async(dispatch) => {
   return response;
 }
 
+// thunk action for DELETE /api/session to log out a user
+export const logout = () => async(dispatch) => {
+  const response = await csrfFetch('/api/session', {
+    method: 'DELETE'
+  });
+  const data = await response.json();
+  dispatch(removeUser());
+  return response;
+}
+
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
