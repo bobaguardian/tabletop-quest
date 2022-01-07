@@ -13,8 +13,7 @@ const Navigation = ({ isLoaded }) => {
   } else {
     sessionLinks = (
       <div id='login-signup-div'>
-        {/* <NavLink to='/login'>Log In</NavLink> */}
-        <LoginFormModal />
+        <LoginFormModal id='login-modal' />
         <NavLink to='/signup'>Sign Up</NavLink>
       </div>
     );
@@ -23,6 +22,7 @@ const Navigation = ({ isLoaded }) => {
   return (
     <nav>
       <NavLink exact to='/'>Home</NavLink>
+      <h1>Tabletop Quest</h1>
       {isLoaded && sessionLinks}
     </nav>
   );

@@ -20,7 +20,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-            Welcome to Tabletop Quest!
+
           </Route>
           <Route path='/signup'>
             <SignupFormPage />
