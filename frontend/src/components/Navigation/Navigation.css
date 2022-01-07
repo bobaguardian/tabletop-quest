@@ -1,5 +1,7 @@
 nav {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding-top: 30px;
   padding-bottom: 30px;
   border-bottom: 1px solid rgba(33,41,63,.1);
@@ -19,4 +21,35 @@ nav a {
 
 nav a:hover {
   color: #F97D49;
+}
+
+nav button {
+  margin-right: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(33,41,63,.1);
+}
+
+#logout-btn {
+  border-radius: 7%;
+  border: 1px solid rgba(249, 125, 73, 0.5);
+  padding: 3px;
+}
+
+#logout-btn:hover {
+  background-color: rgb(249, 125, 73);
+  color: white;
+}
+
+ul li{
+  list-style-type: none;
+}
+
+.profile-icon-menu {
+  display: flex;
+  align-items: center;
+}
+
+#profile-dropdown li {
+  padding: 2px;
 }

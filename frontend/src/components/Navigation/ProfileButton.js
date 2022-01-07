@@ -26,20 +26,20 @@ const ProfileButton = ({ user }) => {
 
 
   return (
-    <>
-      <button onClick={openMenu}>
+    <div className='profile-icon-menu'>
+      <button id='icon-btn' onClick={openMenu}>
         <i className = "fas fa-user-circle" />
       </button>
       {showMenu && (
-        <ul>
+        <ul id='profile-dropdown'>
           <li>{username}</li>
           <li>{email}</li>
           <li>
-            <button onClick={logout}>Log Out</button>
+            <button id="logout-btn" onClick={logout}>Log Out</button>
           </li>
         </ul>
       )}
-    </>
+    </div>
   );
 }
 
