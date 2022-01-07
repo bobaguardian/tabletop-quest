@@ -11,10 +11,10 @@ const router = express.Router();
 
 // validation middleware
 const validateLogin = [
-  check('credential')
+  check('email')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Please provide a valid email or username.'),
+    .withMessage('Please provide a valid email.'),
   check('password')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a password.'),
@@ -23,9 +23,9 @@ const validateLogin = [
 
 // Log in
 router.post('/', validateLogin, asyncHandler(async (req, res, next) => {
-  const { credential, password } = req.body;
+  const { email, password } = req.body;
 
-  const user = await User.login({ credential, password });
+  const user = await User.login({ email, password });
 
   if (!user) {
     const err = new Error('Login failed');

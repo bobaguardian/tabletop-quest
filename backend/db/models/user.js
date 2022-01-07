@@ -66,14 +66,11 @@ module.exports = (sequelize, DataTypes) => {
   // Static method to search for a user based on username or email and if one
   // is found, validate the password
   // if the user is validated, return the user using 'currentUser' scope
-  User.login = async function ({ credential, password }) {
+  User.login = async function ({ email, password }) {
     const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
       where: {
-        [Op.or] : {
-          username: credential,
-          email: credential,
-        },
+        email,
       },
     });
     if (user && user.validatePassword(password)) {
