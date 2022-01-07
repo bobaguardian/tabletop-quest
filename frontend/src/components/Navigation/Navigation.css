@@ -9,8 +9,8 @@ nav {
 }
 
 nav h1 {
-  text-align: center;
   margin: 0 auto;
+  text-align: center;
 }
 
 #login-signup-div a {
@@ -29,6 +29,7 @@ nav a:hover {
 }
 
 nav button {
+  margin-left: 80px;
   margin-right: 20px;
   padding: 10px;
   border-radius: 50%;
@@ -36,6 +37,8 @@ nav button {
 }
 
 #logout-btn {
+  margin-left: 0px;
+  margin-right: 0px;
   border-radius: 7%;
   border: 1px solid rgba(249, 125, 73, 0.5);
   padding: 3px;
@@ -48,6 +51,8 @@ nav button {
 
 ul li{
   list-style-type: none;
+  margin-right: 10px;
+  text-align: center;
 }
 
 .profile-icon-menu {
