@@ -25,6 +25,14 @@ const LoginFormPage = () => {
       });
   }
 
+  const demo = (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.login({
+      email: 'demo@user.io',
+      password: 'imdebestmouse'
+    }))
+  }
+
   return (
     <div id='login-div'>
       <h1>Log In</h1>
@@ -59,6 +67,7 @@ const LoginFormPage = () => {
             />
         </div>
         <button className='form-ele' type='submit'>Log In</button>
+        <button className='demo-btn form-ele' onClick={demo}>Demo as a guest!</button>
       </form>
     </div>
   );
