@@ -2,7 +2,7 @@
 
 Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a social media application that allows users to browse table top games, create posts for the games and participate in discussions about specific games.
 
-## Launch Instructions
+## Local Machine Launch Instructions
 * Clone the tabletop-quest repo
 * Create a `.env` file using the `.env.example` as a template
 * Using PostgreSQL: create your user with the credentials you inputted in the .env file
