@@ -11,8 +11,8 @@ const LoginFormPage = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  // if user is logged in, redirect to home page
-  if (sessionUser) return <Redirect to='/' />;
+  // // if user is logged in, redirect to home page
+  // if (sessionUser) return <Redirect to='/' />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +23,14 @@ const LoginFormPage = () => {
         if (data && data.errors) setErrors(data.errors);
         setPassword('');
       });
+  }
+
+  const demo = (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.login({
+      email: 'demo@user.io',
+      password: 'imdebestmouse'
+    }))
   }
 
   return (
@@ -59,6 +67,7 @@ const LoginFormPage = () => {
             />
         </div>
         <button className='form-ele' type='submit'>Log In</button>
+        <button className='demo-btn form-ele' onClick={demo}>Demo as a guest!</button>
       </form>
     </div>
   );

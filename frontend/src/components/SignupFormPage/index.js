@@ -30,6 +30,14 @@ const SignupFormPage = () => {
     return setErrors(['Confirm Password field must be the same as the Password field.']);
   }
 
+  const demo = (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.login({
+      email: 'demo@user.io',
+      password: 'imdebestmouse'
+    }))
+  }
+
   return (
     <div id='signup-div'>
       <h1>Sign Up</h1>
@@ -93,6 +101,7 @@ const SignupFormPage = () => {
         </div>
 
         <button className='form-ele' type='submit'>Sign Up</button>
+        <button className='demo-btn form-ele' onClick={demo}>Demo as a guest!</button>
       </form>
     </div>
   );

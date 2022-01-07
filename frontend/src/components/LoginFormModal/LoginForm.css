@@ -4,9 +4,13 @@
   align-items:center;
   border: 1px solid gray;
   width: 400px;
-  margin: 100px auto;
+  /* margin: 100px auto; */
   padding: 40px;
 
+}
+
+#login-signup-div a {
+  cursor: pointer;
 }
 
 #login-form {
