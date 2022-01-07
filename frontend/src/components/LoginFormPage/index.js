@@ -12,7 +12,7 @@ const LoginFormPage = () => {
   const [errors, setErrors] = useState([]);
 
   // if user is logged in, redirect to home page
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return <Redirect to='/' />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,13 +22,13 @@ const LoginFormPage = () => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
         setPassword('');
-      })
+      });
   }
 
   return (
-    <div id="login-div">
-      <h1> Log In Form </h1>
-      <form id="login-form" onSubmit={handleSubmit}>
+    <div id='login-div'>
+      <h1>Log In</h1>
+      <form id='login-form' onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
@@ -39,10 +39,10 @@ const LoginFormPage = () => {
             <input
               onChange={(e) => setEmail(e.target.value)}
               value={email}
-              type="email"
+              type='email'
               placeholder='someemail@email.com'
               required
-              id="email"
+              id='email'
             />
         </div>
 
@@ -53,12 +53,12 @@ const LoginFormPage = () => {
             <input
               onChange={(e) => setPassword(e.target.value)}
               value={password}
-              type="password"
+              type='password'
               required
-              id="password"
+              id='password'
             />
         </div>
-        <button className='form-ele' type="submit">Log In</button>
+        <button className='form-ele' type='submit'>Log In</button>
       </form>
     </div>
   );

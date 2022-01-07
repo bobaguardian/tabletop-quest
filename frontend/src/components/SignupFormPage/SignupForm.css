@@ -1,0 +1,17 @@
+#signup-div {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  border: 1px solid gray;
+  width: 400px;
+  margin: 100px auto;
+  padding: 40px;
+
+}
+
+#signup-form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+
+}
