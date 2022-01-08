@@ -4,7 +4,7 @@ Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a socia
 
 ## Local Machine Launch Instructions
 * Clone the tabletop-quest repo
-* Create a `.env` file using the `.env.example` as a template
+* In the `backend` folder, create a `.env` file using the `.env.example` as a template
 * Using PostgreSQL: create your user with the credentials you inputted in the .env file
   * `psql`
   * In psql terminal:
