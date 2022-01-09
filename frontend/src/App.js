@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import ProductList from './components/ProductList';
+import ProductForm from './components/ProductForm';
 import * as sessionActions from './store/session';
 // import * as productActions from './store/products';
 
@@ -28,7 +29,7 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path='/products/new'>
-            Product Form!
+            <ProductForm />
           </Route>
           <Route>
             Not Found
