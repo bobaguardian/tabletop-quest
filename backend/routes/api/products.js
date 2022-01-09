@@ -81,6 +81,7 @@ router.put('/:id', validateProduct, asyncHandler(async (req, res) => {
   const product = await Product.findByPk(id);
 
   // TODO: MAKE SURE TO FORM PREFILL ON FRONTEND
+  // fetch request requires all fields (userId, title, description, imageSrc)
   if (product) {
     await product.update({
       title,
