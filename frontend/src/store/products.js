@@ -21,6 +21,13 @@ export const createProduct = (product) => {
   };
 }
 
+export const deleteProduct = (id) => {
+  return {
+    type: DELETE_PRODUCT,
+    id
+  };
+}
+
 // Thunk action creators
 export const getAllProducts = () => async (dispatch) => {
   const response = await csrfFetch('/api/products');
@@ -43,8 +50,16 @@ export const submitProduct = (product) => async (dispatch) => {
     })
   });
   const data = await response.json();
-  // console.log(data);
   dispatch(createProduct(data.product))
+  return response;
+}
+
+export const removeProduct = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/products/${id}`, {
+    method: 'DELETE'
+  });
+  const data = await response.json();
+  dispatch(deleteProduct(id));
   return response;
 }
 
@@ -61,6 +76,9 @@ const productsReducer = (state = initialState, action) => {
     case CREATE_PRODUCT:
       newState = { ...state };
       newState.entries = [action.product, ...newState.entries]
+      return newState;
+    case DELETE_PRODUCT:
+      newState = { ...state };
       return newState;
     default:
       return state;
