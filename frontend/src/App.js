@@ -27,6 +27,9 @@ function App() {
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
+          <Route path='/products/new'>
+            Product Form!
+          </Route>
           <Route>
             Not Found
           </Route>
