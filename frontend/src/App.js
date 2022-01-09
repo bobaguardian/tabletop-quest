@@ -4,7 +4,9 @@ import { useDispatch } from 'react-redux';
 
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
+import ProductList from './components/ProductList';
 import * as sessionActions from './store/session';
+// import * as productActions from './store/products';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,7 +22,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-
+            <ProductList />
           </Route>
           <Route path='/signup'>
             <SignupFormPage />
