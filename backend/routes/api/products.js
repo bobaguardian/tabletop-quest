@@ -50,14 +50,14 @@ router.get('/', asyncHandler(async (req, res) => {
 // POST /products
 router.post('/', validateProduct, asyncHandler(async (req, res) => {
   const { userId, title, imageSrc, description } = req.body;
-  const newProduct = await Product.create({
+  const product = await Product.create({
     userId,
     title,
     imageSrc,
     description
   });
 
-  return res.json({ newProduct });
+  return res.json({ product });
 }));
 
 // fetch('/api/products', {

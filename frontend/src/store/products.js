@@ -1,3 +1,4 @@
+import { csrfFetch } from "./csrf";
 
 // Action type constants
 const READ_PRODUCTS = 'products/READ_PRODUCTS';
@@ -13,15 +14,41 @@ export const readProducts = (products) => {
   };
 }
 
+export const createProduct = (product) => {
+  return {
+    type: CREATE_PRODUCT,
+    product
+  };
+}
+
 // Thunk action creators
 export const getAllProducts = () => async (dispatch) => {
-  const response = await fetch('/api/products');
+  const response = await csrfFetch('/api/products');
   const data = await response.json();
   dispatch(readProducts(data.products));
 }
 
+export const submitProduct = (product) => async (dispatch) => {
+  const { userId, title, description, imageSrc } = product;
+  const response = await csrfFetch('/api/products', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userId,
+      title,
+      description,
+      imageSrc
+    })
+  });
+  const data = await response.json();
+  // console.log(data);
+  dispatch(createProduct(data.product))
+  return response;
+}
 
-// entries is an object of key (product Id) value (product) pairs
+
 const initialState = { entries: [] }
 
 const productsReducer = (state = initialState, action) => {
@@ -29,13 +56,11 @@ const productsReducer = (state = initialState, action) => {
   switch(action.type) {
     case READ_PRODUCTS:
       newState = { ...state };
-      // Normalizing array => object with reduce
-      // newState.entries = action.products.reduce((entries, product) => {
-      //   entries[product.id] = product;
-      //   return entries;
-      // }, {});
       newState.entries = [...action.products];
-
+      return newState;
+    case CREATE_PRODUCT:
+      newState = { ...state };
+      newState.entries = [action.product, ...newState.entries]
       return newState;
     default:
       return state;
