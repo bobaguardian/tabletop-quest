@@ -1,4 +1,6 @@
-nav {
+
+.nav-links {
+  position: absolute;
   display: flex;
   width: 100%;
   align-items: center;
@@ -9,13 +11,25 @@ nav {
 }
 
 nav h1 {
-  margin: 0 auto;
+  width: 100%;
   text-align: center;
+  vertical-align: middle;
+  line-height: 90px;
 }
 
 #login-signup-div a {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+#submit-icon-div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#submit-icon-div a {
+  margin: 0;
 }
 
 nav a {
@@ -29,8 +43,8 @@ nav a:hover {
 }
 
 nav button {
-  margin-left: 80px;
-  margin-right: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
   padding: 10px;
   border-radius: 50%;
   border: 1px solid rgba(33,41,63,.1);
