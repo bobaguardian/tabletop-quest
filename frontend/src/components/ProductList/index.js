@@ -1,15 +1,16 @@
 import { useEffect } from "react";
-import { useHistory, Redirect } from 'react-router-dom';
+import { useHistory, Redirect, Switch, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts, removeProduct } from "../../store/products";
 import './ProductList.css';
+import ProductForm from "../ProductForm";
 
 const ProductList = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   // subscribes ProductList to state.products.entries
-  const productsObj = useSelector((state) => {console.log("products.entries changed"); return state.products.entries});
+  const productsObj = useSelector((state) => {return state.products.entries});
   const products = Object.values(productsObj).reverse();
 
   useEffect(() => {
@@ -21,10 +22,6 @@ const ProductList = () => {
     const productId = e.target.value;
     dispatch(removeProduct(productId))
   };
-
-  const handleEdit = (e) => {
-
-  }
 
   return (
     <div className='product-list-div'>

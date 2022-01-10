@@ -3,25 +3,32 @@ import { useState, useEffect } from 'react';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import * as productActions from '../../store/products';
+import { getAllProducts, submitProduct } from '../../store/products';
 import './ProductForm.css';
 
-const ProductForm = ({type}) => {
+const ProductForm = ({type, productsObj}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-  let productId = parseInt(useParams().id, 10);
-  console.log(productId);
 
-  // dispatch get specific product details
   let initialTitle = '';
   let initialImageSrc = '';
   let initialDescription = '';
 
+  let productId = parseInt(useParams().id, 10);
+  let productDetails;
+  if (productId) {
+    productDetails = productsObj[productId];
+    if (productDetails){
+      initialTitle = productDetails.title;
+      initialImageSrc = productDetails.imageSrc;
+      initialDescription = productDetails.description;
+    }
+  }
 
-  const [title, setTitle] = useState('');
-  const [imageSrc, setImageSrc] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState(initialTitle);
+  const [imageSrc, setImageSrc] = useState(initialImageSrc);
+  const [description, setDescription] = useState(initialDescription);
   const [errors, setErrors] = useState([]);
 
 
@@ -40,7 +47,7 @@ const ProductForm = ({type}) => {
     }
 
     setErrors([]);
-    dispatch(productActions.submitProduct(product))
+    dispatch(submitProduct(product))
       .then((res) => {
         history.push('/');
       })
