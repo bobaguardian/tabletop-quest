@@ -74,6 +74,32 @@ ul li{
   align-items: center;
 }
 
-#profile-dropdown li {
+#profile-dropdown-div {
+  position: absolute;
+  top: 65px;
+  right: 10px;
+  /* margin: 20px; */
+  padding-top: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s, opacity 0.5s ease-in-out;
+}
+
+.profile-icon-menu:hover #profile-dropdown-div {
+  visibility: visible;
+  opacity: 1;
+}
+
+#profile-dropdown-div:hover {
+  visibility: visible;
+  opacity: 1;
+}
+
+#profile-dropdown-div ul {
+  border: 1px solid black;
+  /* background-color: gray; */
+  padding: 10px;
+}
+#profile-dropdown-div li {
   padding: 2px;
 }
