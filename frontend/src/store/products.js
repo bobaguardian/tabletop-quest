@@ -86,8 +86,7 @@ const productsReducer = (state = initialState, action) => {
       // need to delete, then reassign newState.entries to trigger change
       delete newState.entries[action.id];
       newState.entries = { ...newState.entries }
-
-      console.log("NEW STATE", newState);
+      // console.log("NEW STATE", newState);
       return newState;
     default:
       return state;

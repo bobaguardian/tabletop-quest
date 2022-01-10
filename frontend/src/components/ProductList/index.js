@@ -22,6 +22,10 @@ const ProductList = () => {
     dispatch(removeProduct(productId))
   };
 
+  const handleEdit = (e) => {
+
+  }
+
   return (
     <div className='product-list-div'>
       <h1>ProductList</h1>
@@ -35,7 +39,12 @@ const ProductList = () => {
               <h2>{title}</h2>
               <p>{description}</p>
               <p>{Date(updatedAt).toLocaleString()}</p>
-              {(sessionUser && sessionUser.id === userId) ? <button value={id} onClick={handleDelete}>Delete</button> : null}
+              {(sessionUser && sessionUser.id === userId) ? (
+                <>
+                  <button value={id} onClick={handleEdit}>Edit</button>
+                  <button value={id} onClick={handleDelete}>Delete</button>
+                </>
+              ) : null}
             </div>
           </div>
         ))}
