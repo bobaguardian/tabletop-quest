@@ -51,7 +51,7 @@ export const submitProduct = (product) => async (dispatch) => {
   });
   const data = await response.json();
   dispatch(createProduct(data.product))
-  return response;
+  return data;
 }
 
 export const removeProduct = (id) => async (dispatch) => {
@@ -64,21 +64,30 @@ export const removeProduct = (id) => async (dispatch) => {
 }
 
 
-const initialState = { entries: [] }
+const initialState = { entries: {} }
 
 const productsReducer = (state = initialState, action) => {
   let newState;
   switch(action.type) {
     case READ_PRODUCTS:
       newState = { ...state };
-      newState.entries = [...action.products];
+      newState.entries = action.products.reduce((entries, product) => {
+        entries[product.id] = product;
+        return entries;
+      }, {});
+      // newState.entries = [...action.products];
       return newState;
     case CREATE_PRODUCT:
       newState = { ...state };
-      newState.entries = [action.product, ...newState.entries]
+      newState.entries = {[action.product.id]: action.product, ...newState.entries}
       return newState;
     case DELETE_PRODUCT:
       newState = { ...state };
+      // need to delete, then reassign newState.entries to trigger change
+      delete newState.entries[action.id];
+      newState.entries = { ...newState.entries }
+
+      console.log("NEW STATE", newState);
       return newState;
     default:
       return state;

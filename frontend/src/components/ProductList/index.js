@@ -1,23 +1,25 @@
 import { useEffect } from "react";
+import { useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../store/products";
+import { getAllProducts, removeProduct } from "../../store/products";
 import './ProductList.css';
 
 const ProductList = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   // subscribes ProductList to state.products.entries
-  const products = useSelector((state) => state.products.entries);
-  // const products = Object.values(productsObj);
+  const productsObj = useSelector((state) => {console.log("products.entries changed"); return state.products.entries});
+  const products = Object.values(productsObj).reverse();
 
   useEffect(() => {
+    console.log("product use effect");
     dispatch(getAllProducts());
   }, [dispatch]);
 
-
   const handleDelete = (e) => {
     const productId = e.target.value;
-    console.log("deleting", productId);
+    dispatch(removeProduct(productId))
   };
 
   return (
@@ -32,7 +34,7 @@ const ProductList = () => {
             <div className='product-detail-div'>
               <h2>{title}</h2>
               <p>{description}</p>
-              <p>{updatedAt.toLocaleString()}</p>
+              <p>{Date(updatedAt).toLocaleString()}</p>
               {(sessionUser && sessionUser.id === userId) ? <button value={id} onClick={handleDelete}>Delete</button> : null}
             </div>
           </div>
