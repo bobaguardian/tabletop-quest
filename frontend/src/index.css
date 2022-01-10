@@ -7,6 +7,12 @@
 
 body {
   font-family: BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+  background-color: #181A1B;
+  color: rgb(203, 198, 191);
+}
+
+a {
+  color: rgb(203, 198, 191);
 }
 
 .demo-btn {
