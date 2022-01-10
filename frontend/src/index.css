@@ -15,6 +15,22 @@ a {
   color: rgb(203, 198, 191);
 }
 
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+.errors-ul li {
+  color: red;
+}
+
 .demo-btn {
   background-color: rgb(247, 151, 110);
   color: black;

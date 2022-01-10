@@ -71,9 +71,9 @@ const ProductForm = ({type, productsObj}) => {
     <div className='submit-product-div'>
       {(type === 'create') ? <h2>Submit a New Product</h2> : <h2>Edit Your Product</h2>}
 
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      <form className='submit-product-form' onSubmit={handleSubmit}>
+        <ul className='errors-ul'>
+          {errors.map((error, idx) => <li key={idx}>* {error} *</li>)}
         </ul>
         <div className='form-ele'>
           <label htmlFor='title'>
@@ -98,6 +98,8 @@ const ProductForm = ({type, productsObj}) => {
             placeholder='Why my quest is over for the best tabletop game!'
             required
             id='description'
+            rows='7'
+            cols='50'
           />
         </div>
         <div className='form-ele'>

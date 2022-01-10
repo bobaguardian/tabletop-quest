@@ -25,11 +25,11 @@
   background-color: rgb(249, 125, 73);
 }
 
-.product-div:hover .product-detail-div h2 {
+.product-div:hover .product-detail-div h3 {
   color: rgb(63, 63, 63);
 }
 
-.product-detail-div h2 {
+.product-detail-div h3 {
   transition: color 0.4s ease-in-out;
 }
 
@@ -57,16 +57,17 @@
 
 .edit-delete-div a {
   text-decoration: none;
+  font-size: small;
 }
 
 .edit-delete-div a:hover {
   color: green;
 }
 .edit-delete-div button {
+  font-size: small;
   border: none;
   background: none;
   cursor: pointer;
-  font: inherit;
   height: auto;
   color: rgb(203, 198, 191);
 }

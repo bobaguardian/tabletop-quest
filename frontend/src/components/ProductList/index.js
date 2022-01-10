@@ -24,13 +24,13 @@ const ProductList = () => {
 
   return (
     <div className='product-list-div'>
-      <h1>Product List</h1>
+      <h2>Product List</h2>
       <ul>
         {products.map(({id, userId, title, imageSrc, description, updatedAt}) => (
           <div key={id} className='product-div'>
             <img src={imageSrc} alt={title} />
             <div className='product-detail-div'>
-              <h2>{title}</h2>
+              <h3>{title}</h3>
               {(sessionUser && sessionUser.id === userId) ? (
                 <div className='edit-delete-div'>
                   <a value={id} href={`/products/${id}/edit`}>Edit</a>
