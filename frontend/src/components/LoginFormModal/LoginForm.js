@@ -66,7 +66,7 @@ const LoginFormPage = () => {
               id='password'
             />
         </div>
-        <button className='form-ele' type='submit'>Log In</button>
+        <button className='form-ele login-btn' type='submit'>Log In</button>
         <button className='demo-btn form-ele' onClick={demo}>Demo as a guest!</button>
       </form>
     </div>

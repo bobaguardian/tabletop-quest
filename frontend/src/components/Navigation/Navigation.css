@@ -7,7 +7,7 @@
   justify-content: space-between;
   padding-top: 30px;
   padding-bottom: 30px;
-  border-bottom: 1px solid rgba(33,41,63,.1);
+  border-bottom: 1px solid rgb(203, 198, 191);
 }
 
 nav h1 {
@@ -78,6 +78,8 @@ ul li{
 }
 
 #profile-dropdown-div {
+  background-color:rgb(46, 51, 53);
+  border-radius: 7px;
   position: absolute;
   top: 65px;
   right: 10px;
