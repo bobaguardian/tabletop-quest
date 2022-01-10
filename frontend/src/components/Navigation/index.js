@@ -10,10 +10,10 @@ const Navigation = ({ isLoaded }) => {
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <>
+      <div id='submit-icon-div'>
         <NavLink to='/products/new'>Submit Product</NavLink>
         <ProfileButton id='profile-btn' user={sessionUser}/>
-      </>
+      </div>
     );
   } else {
     sessionLinks = (
@@ -26,9 +26,11 @@ const Navigation = ({ isLoaded }) => {
 
   return (
     <nav>
-      <NavLink exact to='/'>Home</NavLink>
+      <div className='nav-links'>
+        <NavLink exact to='/'>Home</NavLink>
+        {isLoaded && sessionLinks}
+      </div>
       <h1>Tabletop Quest</h1>
-      {isLoaded && sessionLinks}
     </nav>
   );
 }

@@ -33,8 +33,8 @@ const ProductList = () => {
             // adding product profile page */}
             <div className='product-detail-div'>
               <h2>{title}</h2>
-              <p>{description}</p>
-              <p>{Date(updatedAt).toLocaleString()}</p>
+              {/* <p>{description}</p>
+              <p>{Date(updatedAt).toLocaleString()}</p> */}
               {(sessionUser && sessionUser.id === userId) ? (
                 <>
                   <a value={id} href={`/products/${id}/edit`}>Edit</a>
