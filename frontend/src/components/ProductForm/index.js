@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getAllProducts, submitProduct } from '../../store/products';
+import { submitProduct, editProduct } from '../../store/products';
 import './ProductForm.css';
 
 const ProductForm = ({type, productsObj}) => {
@@ -16,9 +16,8 @@ const ProductForm = ({type, productsObj}) => {
   let initialDescription = '';
 
   let productId = parseInt(useParams().id, 10);
-  let productDetails;
   if (productId) {
-    productDetails = productsObj[productId];
+    let productDetails = productsObj[productId];
     if (productDetails){
       initialTitle = productDetails.title;
       initialImageSrc = productDetails.imageSrc;
@@ -45,16 +44,27 @@ const ProductForm = ({type, productsObj}) => {
       imageSrc,
       description
     }
-
     setErrors([]);
-    dispatch(submitProduct(product))
-      .then((res) => {
-        history.push('/');
-      })
-      .catch(async(res) => {
-        const data = await res.json();
-        if (data && data.errors) return setErrors(data.errors);
-      });
+
+    if (type === 'create') { // CREATE
+      dispatch(submitProduct(product))
+        .then((res) => {
+          history.push('/');
+        })
+        .catch(async(res) => {
+          const data = await res.json();
+          if (data && data.errors) return setErrors(data.errors);
+        });
+    } else { // UPDATE
+      dispatch(editProduct(productId, product))
+        .then((res) => {
+          history.push('/');
+        })
+        .catch(async(res) => {
+          const data = await res.json();
+          if (data && data.errors) return setErrors(data.errors);
+        });
+    }
   }
 
   return (

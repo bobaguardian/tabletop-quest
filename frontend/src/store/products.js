@@ -29,6 +29,14 @@ export const deleteProduct = (id) => {
   };
 }
 
+export const updateProduct = (id, product) => {
+  return {
+    type: UPDATE_PRODUCT,
+    id,
+    product
+  };
+}
+
 export const readOneProduct = (id) => {
   return {
     type: READ_ONE_PRODUCT,
@@ -37,12 +45,14 @@ export const readOneProduct = (id) => {
 }
 
 // Thunk action creators
+// READ
 export const getAllProducts = () => async (dispatch) => {
   const response = await csrfFetch('/api/products');
   const data = await response.json();
   dispatch(readProducts(data.products));
 }
 
+// CREATE
 export const submitProduct = (product) => async (dispatch) => {
   const { userId, title, description, imageSrc } = product;
   const response = await csrfFetch('/api/products', {
@@ -62,13 +72,35 @@ export const submitProduct = (product) => async (dispatch) => {
   return data;
 }
 
+// DELETE
 export const removeProduct = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/products/${id}`, {
     method: 'DELETE'
   });
   const data = await response.json();
   dispatch(deleteProduct(id));
-  return response;
+  return data;
+}
+
+// UPDATE
+export const editProduct = (id, product) => async (dispatch) => {
+  const { userId, title, imageSrc, description } = product;
+  const response = await csrfFetch(`/api/products/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userId,
+      title,
+      imageSrc,
+      description
+    })
+  });
+  const data = await response.json();
+  console.log(data);
+  dispatch(updateProduct(id, product));
+  return data;
 }
 
 export const getSingleProduct = (id) => async (dispatch) => {
@@ -90,7 +122,6 @@ const productsReducer = (state = initialState, action) => {
         entries[product.id] = product;
         return entries;
       }, {});
-      // newState.entries = [...action.products];
       return newState;
     case CREATE_PRODUCT:
       newState = { ...state };
@@ -101,7 +132,10 @@ const productsReducer = (state = initialState, action) => {
       // need to delete, then reassign newState.entries to trigger change
       delete newState.entries[action.id];
       newState.entries = { ...newState.entries }
-      // console.log("NEW STATE", newState);
+      return newState;
+    case UPDATE_PRODUCT:
+      newState = { ...state };
+      newState.entries = { ...newState.entries, [action.id]: action.product};
       return newState;
     default:
       return state;

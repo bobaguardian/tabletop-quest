@@ -14,7 +14,6 @@ const ProductList = () => {
   const products = Object.values(productsObj).reverse();
 
   useEffect(() => {
-    console.log("product use effect");
     dispatch(getAllProducts());
   }, [dispatch]);
 
