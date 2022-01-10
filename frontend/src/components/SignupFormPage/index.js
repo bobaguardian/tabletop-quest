@@ -40,9 +40,9 @@ const SignupFormPage = () => {
 
   return (
     <div id='signup-div'>
-      <h1>Sign Up</h1>
+      <h2>Sign Up</h2>
       <form id='signup-form' onSubmit={handleSubmit}>
-        <ul>
+        <ul className='errors-ul'>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
 
@@ -100,7 +100,7 @@ const SignupFormPage = () => {
             />
         </div>
 
-        <button className='form-ele' type='submit'>Sign Up</button>
+        <button className='login-btn form-ele' type='submit'>Sign Up</button>
         <button className='demo-btn form-ele' onClick={demo}>Demo as a guest!</button>
       </form>
     </div>

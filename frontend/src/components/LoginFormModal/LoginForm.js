@@ -37,7 +37,7 @@ const LoginFormPage = () => {
     <div id='login-div'>
       <h1>Log In</h1>
       <form id='login-form' onSubmit={handleSubmit}>
-        <ul>
+        <ul className='errors-ul'>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <div className='form-ele'>
@@ -66,7 +66,7 @@ const LoginFormPage = () => {
               id='password'
             />
         </div>
-        <button className='form-ele' type='submit'>Log In</button>
+        <button className='form-ele login-btn' type='submit'>Log In</button>
         <button className='demo-btn form-ele' onClick={demo}>Demo as a guest!</button>
       </form>
     </div>

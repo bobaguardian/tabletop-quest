@@ -24,22 +24,18 @@ const ProductList = () => {
 
   return (
     <div className='product-list-div'>
-      <h1>ProductList</h1>
+      <h2>Product List</h2>
       <ul>
         {products.map(({id, userId, title, imageSrc, description, updatedAt}) => (
           <div key={id} className='product-div'>
             <img src={imageSrc} alt={title} />
-            {/* TO DO: take out description and updatedAt when
-            // adding product profile page */}
             <div className='product-detail-div'>
-              <h2>{title}</h2>
-              {/* <p>{description}</p>
-              <p>{Date(updatedAt).toLocaleString()}</p> */}
+              <h3>{title}</h3>
               {(sessionUser && sessionUser.id === userId) ? (
-                <>
+                <div className='edit-delete-div'>
                   <a value={id} href={`/products/${id}/edit`}>Edit</a>
                   <button value={id} onClick={handleDelete}>Delete</button>
-                </>
+                </div>
               ) : null}
             </div>
           </div>

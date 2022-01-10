@@ -7,7 +7,7 @@
   justify-content: space-between;
   padding-top: 30px;
   padding-bottom: 30px;
-  border-bottom: 1px solid rgba(33,41,63,.1);
+  border-bottom: 1px solid rgb(203, 198, 191);
 }
 
 nav h1 {
@@ -33,9 +33,11 @@ nav h1 {
 }
 
 nav a {
+  font-weight: 500;
   text-decoration: none;
   margin-left: 30px;
   margin-right: 60px;
+  transition: color 0.15s ease-in-out;
 }
 
 nav a:hover {
@@ -56,6 +58,7 @@ nav button {
   border-radius: 7%;
   border: 1px solid rgba(249, 125, 73, 0.5);
   padding: 3px;
+  transition: color 0.15s, background-color 0.15s ease-in-out;
 }
 
 #logout-btn:hover {
@@ -75,11 +78,13 @@ ul li{
 }
 
 #profile-dropdown-div {
+  background-color:rgb(46, 51, 53);
+  border-radius: 7px;
   position: absolute;
   top: 65px;
   right: 10px;
   /* margin: 20px; */
-  padding-top: 20px;
+  padding-top: 33px;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.5s, opacity 0.5s ease-in-out;
@@ -96,8 +101,8 @@ ul li{
 }
 
 #profile-dropdown-div ul {
-  border: 1px solid black;
-  /* background-color: gray; */
+  border: 1px solid rgba(33,41,63,.1);
+  /* box-shadow:  1px 1px 1px 1px  gray; */
   padding: 10px;
 }
 #profile-dropdown-div li {
