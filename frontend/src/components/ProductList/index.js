@@ -41,7 +41,7 @@ const ProductList = () => {
               <p>{Date(updatedAt).toLocaleString()}</p>
               {(sessionUser && sessionUser.id === userId) ? (
                 <>
-                  <button value={id} onClick={handleEdit}>Edit</button>
+                  <a value={id} href={`/products/${id}/edit`}>Edit</a>
                   <button value={id} onClick={handleDelete}>Delete</button>
                 </>
               ) : null}

@@ -1,15 +1,24 @@
 
 import { useState, useEffect } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import * as productActions from '../../store/products';
 import './ProductForm.css';
 
-const ProductForm = () => {
+const ProductForm = ({type}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
+  let productId = parseInt(useParams().id, 10);
+  console.log(productId);
+
+  // dispatch get specific product details
+  let initialTitle = '';
+  let initialImageSrc = '';
+  let initialDescription = '';
+
+
   const [title, setTitle] = useState('');
   const [imageSrc, setImageSrc] = useState('');
   const [description, setDescription] = useState('');
@@ -43,7 +52,8 @@ const ProductForm = () => {
 
   return (
     <div className='submit-product-div'>
-      <h2>Submit a New Product</h2>
+      {(type === 'create') ? <h2>Submit a New Product</h2> : <h2>Edit Your Product</h2>}
+
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}

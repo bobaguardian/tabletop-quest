@@ -29,7 +29,10 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path='/products/new'>
-            <ProductForm />
+            <ProductForm type='create' />
+          </Route>
+          <Route path='/products/:id/edit'>
+            <ProductForm type='update' />
           </Route>
           <Route>
             Not Found

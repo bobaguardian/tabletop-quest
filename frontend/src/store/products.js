@@ -5,6 +5,7 @@ const READ_PRODUCTS = 'products/READ_PRODUCTS';
 const CREATE_PRODUCT = 'products/CREATE_PRODUCT';
 const UPDATE_PRODUCT = 'products/UPDATE_PRODUCT';
 const DELETE_PRODUCT = 'products/DELETE_PRODUCT';
+const READ_ONE_PRODUCT = 'products/READ_ONE_PRODUCT';
 
 // Action creators
 export const readProducts = (products) => {
@@ -24,6 +25,13 @@ export const createProduct = (product) => {
 export const deleteProduct = (id) => {
   return {
     type: DELETE_PRODUCT,
+    id
+  };
+}
+
+export const readOneProduct = (id) => {
+  return {
+    type: READ_ONE_PRODUCT,
     id
   };
 }
@@ -60,6 +68,13 @@ export const removeProduct = (id) => async (dispatch) => {
   });
   const data = await response.json();
   dispatch(deleteProduct(id));
+  return response;
+}
+
+export const getSingleProduct = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/products/${id}`);
+  const data = await response.json();
+  //dispatch(getSingleProduct(id));
   return response;
 }
 

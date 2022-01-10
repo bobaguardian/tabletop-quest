@@ -108,6 +108,15 @@ router.delete('/:id', asyncHandler(async (req, res) => {
   return res.json({ message: 'no product found' });
 }));
 
+// GET /products/:id - SINGLE PRODUCT
+router.get('/:id', asyncHandler(async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const product = await Product.findByPk(id);
+  if (product) {
+    return res.json({ product });
+  }
+  return res.json({ message: 'no product found'});
+}))
 
 
 module.exports = router;
