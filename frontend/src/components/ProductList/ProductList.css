@@ -2,7 +2,7 @@
   margin-top: 50px;
   margin-left: 100px;
   /* Change later  */
-  margin-right: 20%;
+  margin-right: 35%;
   border-right: 1px solid rgb(203, 198, 191);
 }
 
@@ -42,30 +42,54 @@
 
 }
 
-
 .product-detail-div {
   padding-left: 30px;
   width: 80%;
   height: 70%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly ;
+  justify-content: space-between;
+}
+
+.edit-delete-menu {
+  position: relative;
+  top: 5px;
+  width: 30px;
+  padding: 3px 3px;
+  margin-left: 5px;
+}
+.edit-delete-menu:hover {
+  display: block;
+  border-radius: 5px;
+}
+
+.edit-delete-div {
+  position: absolute;
+  top: 20px;
+  right: 5px;
+  width: 65px;
+  padding: 10px;
+  background-color:rgb(63, 63, 63);
+  border-radius: 5px;
+  text-align: end;
 }
 
 .edit-delete-div a, .edit-delete-div button{
-  margin-right: 10px;
+  font-family: Helvetica, sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+  font-size: small;
 }
 
 .edit-delete-div a {
-  text-decoration: none;
-  font-size: small;
+  margin-bottom: 10px;
 }
 
 .edit-delete-div a:hover {
   color: green;
 }
+
 .edit-delete-div button {
-  font-size: small;
+
   border: none;
   background: none;
   cursor: pointer;

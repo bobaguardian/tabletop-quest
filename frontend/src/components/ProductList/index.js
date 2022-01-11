@@ -18,12 +18,19 @@ const ProductList = () => {
     return new Date(b.updatedAt) - new Date(a.updatedAt);
   });
   const [showModal, setShowModal] = useState(false);
+  const [showEditDeleteMenu, setShowEditDeleteMenu] = useState(false);
+  const [edMenuId, setEdMenuId] = useState();
   const [profileModalId, setProfileModalId] = useState();
-
 
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
+
+  // stop background from scrolling when modal is shown
+  useEffect(() => {
+    if (showModal) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'unset';
+ }, [showModal])
 
   const handleDelete = (e) => {
     e.stopPropagation();
@@ -42,12 +49,20 @@ const ProductList = () => {
               <img src={imageSrc} alt={title} />
               <div className='product-detail-div'>
                 <h3>{title}</h3>
-                {(sessionUser && sessionUser.id === userId) ? (
-                  <div className='edit-delete-div'>
-                    <Link value={id} to={`/products/${id}/edit`}>Edit</Link>
-                    <button value={id} onClick={handleDelete}>Delete</button>
-                  </div>
-                ) : null}
+                {(sessionUser && sessionUser.id === userId) ?
+                  <i class="fas fa-ellipsis-h edit-delete-menu"
+                    onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
+                    onMouseLeave={() => setShowEditDeleteMenu(false)}>
+                    {(showEditDeleteMenu && (edMenuId === id)) ? (
+                      <div className='edit-delete-div'
+                        onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
+                        onMouseLeave={() => setShowEditDeleteMenu(false)}>
+                        <Link value={id} to={`/products/${id}/edit`}>Edit</Link>
+                        <button value={id} onClick={handleDelete}>Delete</button>
+                      </div>
+                    ) : null}
+                  </i>
+                : null }
               </div>
             </div>
           </>
@@ -55,8 +70,8 @@ const ProductList = () => {
         ))}
       </ul>
         {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            <ProductProfile productsObj={productsObj} productId={profileModalId}/>
+          <Modal id='product-modal' onClose={() => setShowModal(false)}>
+            <ProductProfile productsObj={productsObj} productId={profileModalId} sessionUser={sessionUser} onClose={() => setShowModal(false)}/>
           </Modal>
           )}
     </div>
