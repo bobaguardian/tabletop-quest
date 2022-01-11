@@ -28,6 +28,10 @@ app.use(helmet({
   contentSecurityPolicy: false
 }));
 
+app.use(helmet.crossOriginResourcePolicy({
+  policy: "cross-origin"
+}));
+
 // Set the _csrf token and create req.csrfTokenmethod
 app.use(csurf({
   cookie: {
