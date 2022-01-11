@@ -16,8 +16,9 @@ const ProductForm = ({type, productsObj}) => {
   let initialDescription = '';
 
   let productId = parseInt(useParams().id, 10);
+  let productDetails;
   if (productId) {
-    let productDetails = productsObj[productId];
+    productDetails = productsObj[productId];
     if (productDetails){
       initialTitle = productDetails.title;
       initialImageSrc = productDetails.imageSrc;
@@ -30,10 +31,15 @@ const ProductForm = ({type, productsObj}) => {
   const [description, setDescription] = useState(initialDescription);
   const [errors, setErrors] = useState([]);
 
-
   if (!sessionUser) {
     return <Redirect to='/'></Redirect>
   }
+
+  if (productId && productDetails.userId !== sessionUser.id){
+    return <Redirect to='/products' />;
+  }
+
+
 
 
   const handleSubmit = (e) => {

@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts, removeProduct } from "../../store/products";
 import './ProductList.css';
 import ProductForm from "../ProductForm";
+import { Modal } from '../../context/Modal';
+import ProductProfile from "../ProductProfileModal";
 
 const ProductList = () => {
   const dispatch = useDispatch();
@@ -15,12 +17,17 @@ const ProductList = () => {
   const products = Object.values(productsObj).sort(function (a, b) {
     return new Date(b.updatedAt) - new Date(a.updatedAt);
   });
+  const [showModal, setShowModal] = useState(false);
+  const [profileModalId, setProfileModalId] = useState();
+
 
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
   const handleDelete = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
     const productId = e.target.value;
     dispatch(removeProduct(productId))
   };
@@ -29,21 +36,29 @@ const ProductList = () => {
     <div className='product-list-div'>
       <h2>Product List</h2>
       <ul>
-        {products.map(({id, userId, title, imageSrc, description, updatedAt}) => (
-          <div key={`product-${id}`}  className='product-div'>
-            <img src={imageSrc} alt={title} />
-            <div className='product-detail-div'>
-              <h3>{title}</h3>
-              {(sessionUser && sessionUser.id === userId) ? (
-                <div className='edit-delete-div'>
-                  <Link value={id} to={`/products/${id}/edit`}>Edit</Link>
-                  <button value={id} onClick={handleDelete}>Delete</button>
-                </div>
-              ) : null}
+        {products.map(({id, userId, title, imageSrc, description, updatedAt, createdAt}) => (
+          <>
+            <div key={`product-${id}`}  className='product-div' onClick={() => {setShowModal(true); setProfileModalId(id)}}>
+              <img src={imageSrc} alt={title} />
+              <div className='product-detail-div'>
+                <h3>{title}</h3>
+                {(sessionUser && sessionUser.id === userId) ? (
+                  <div className='edit-delete-div'>
+                    <Link value={id} to={`/products/${id}/edit`}>Edit</Link>
+                    <button value={id} onClick={handleDelete}>Delete</button>
+                  </div>
+                ) : null}
+              </div>
             </div>
-          </div>
+          </>
+
         ))}
       </ul>
+        {showModal && (
+          <Modal onClose={() => setShowModal(false)}>
+            <ProductProfile productsObj={productsObj} productId={profileModalId}/>
+          </Modal>
+          )}
     </div>
   );
 }
