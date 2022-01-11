@@ -135,7 +135,7 @@ const productsReducer = (state = initialState, action) => {
       return newState;
     case UPDATE_PRODUCT:
       newState = { ...state };
-      newState.entries = { ...newState.entries, [action.id]: action.product};
+      newState.entries = { [action.id]: action.product, ...newState.entries};
       return newState;
     default:
       return state;

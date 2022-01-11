@@ -43,7 +43,6 @@ router.get('/', asyncHandler(async (req, res) => {
     include: User,
     order: [['updatedAt', 'DESC']]
   });
-  console.log(products);
   return res.json({ products });
 }));
 

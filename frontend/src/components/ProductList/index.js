@@ -11,7 +11,10 @@ const ProductList = () => {
   const sessionUser = useSelector(state => state.session.user);
   // subscribes ProductList to state.products.entries
   const productsObj = useSelector((state) => {return state.products.entries});
-  const products = Object.values(productsObj).reverse();
+  // sort products based on most recently updated
+  const products = Object.values(productsObj).sort(function (a, b) {
+    return new Date(b.updatedAt) - new Date(a.updatedAt);
+  });
 
   useEffect(() => {
     dispatch(getAllProducts());
