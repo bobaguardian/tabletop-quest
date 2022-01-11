@@ -27,6 +27,12 @@ const ProductList = () => {
     dispatch(getAllProducts());
   }, [dispatch]);
 
+  // stop background from scrolling when modal is shown
+  useEffect(() => {
+    if (showModal) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'unset';
+ }, [showModal])
+
   const handleDelete = (e) => {
     e.stopPropagation();
     e.preventDefault();
