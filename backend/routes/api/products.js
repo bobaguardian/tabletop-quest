@@ -59,20 +59,6 @@ router.post('/', validateProduct, asyncHandler(async (req, res) => {
   return res.json({ product });
 }));
 
-// fetch('/api/products', {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json',
-//     "XSRF-TOKEN": `CDUp4ooZ--hHE5ebRjhm_kr_vC4-YVgjPRfk`
-//   },
-//   body: JSON.stringify({
-//     userId: 1,
-//     title: "Test3 New Product",
-//     imageSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/640px-Image_created_with_a_mobile_phone.png",
-//     description: "Testing POST /api/products - invalid image src"
-//   })
-// }).then(res => res.json()).then(data => console.log(data));
-
 // PUT /products/:id
 router.put('/:id', validateProduct, asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id, 10);
