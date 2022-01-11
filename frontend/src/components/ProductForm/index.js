@@ -49,7 +49,7 @@ const ProductForm = ({type, productsObj}) => {
     if (type === 'create') { // CREATE
       dispatch(submitProduct(product))
         .then((res) => {
-          history.push('/');
+          history.push('/products');
         })
         .catch(async(res) => {
           const data = await res.json();
@@ -58,7 +58,7 @@ const ProductForm = ({type, productsObj}) => {
     } else { // UPDATE
       dispatch(editProduct(productId, product))
         .then((res) => {
-          history.push('/');
+          history.push('/products');
         })
         .catch(async(res) => {
           const data = await res.json();

@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
 const ProfileButton = ({ user }) => {
   const { username, email } = user;
   const dispatch = useDispatch();
+  const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
-    return <Redirect to='/' />;
+    return history.push('/');
   }
 
   return (

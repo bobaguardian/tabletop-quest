@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
+import SplashPage from './components/SplashPage';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import ProductList from './components/ProductList';
@@ -25,10 +26,10 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-            <ProductList />
+            <SplashPage />
           </Route>
-          <Route path='/welcome'>
-
+          <Route exact path='/products'>
+            <ProductList />
           </Route>
           <Route path='/signup'>
             <SignupFormPage />
