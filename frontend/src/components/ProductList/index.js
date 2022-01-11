@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useHistory, Redirect, Switch, Route } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts, removeProduct } from "../../store/products";
 import './ProductList.css';
@@ -33,7 +33,7 @@ const ProductList = () => {
               <h3>{title}</h3>
               {(sessionUser && sessionUser.id === userId) ? (
                 <div className='edit-delete-div'>
-                  <a value={id} href={`/products/${id}/edit`}>Edit</a>
+                  <Link value={id} to={`/products/${id}/edit`}>Edit</Link>
                   <button value={id} onClick={handleDelete}>Delete</button>
                 </div>
               ) : null}
