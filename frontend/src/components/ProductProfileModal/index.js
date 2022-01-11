@@ -25,9 +25,10 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
       <div id='product-profile-header'>
         <img src={imageSrc} alt={title} />
         <div id='product-profile-title-dates'>
-          <h2>{title}</h2>
+          <div className='flex'>
+            <h2>{title}</h2>
             {(sessionUser && sessionUser.id === userId) ?
-              <i class="fas fa-ellipsis-h edit-delete-menu"
+              <i class="fas fa-ellipsis-h edit-delete-menu-profile"
                 onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(productId);}}
                 onMouseLeave={() => setShowEditDeleteMenu(false)}>
                 {(showEditDeleteMenu && (edMenuId === productId)) ? (
@@ -40,6 +41,7 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
                 ) : null}
               </i>
             : null }
+          </div>
           {(createdAt === updatedAt) ?
             <p>Posted {new Date(createdAt).toLocaleString()}</p> :
             <p>Last Edit {new Date(updatedAt).toLocaleString()}</p>

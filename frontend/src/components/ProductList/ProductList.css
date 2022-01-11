@@ -64,28 +64,32 @@
 
 .edit-delete-div {
   position: absolute;
-  top: 15px;
+  top: 20px;
+  right: 5px;
   width: 65px;
   padding: 10px;
   background-color:rgb(63, 63, 63);
   border-radius: 5px;
+  text-align: end;
 }
 
-/* .edit-delete-div a, .edit-delete-div button{
-  padding-bottom: 5px;
-} */
-
-.edit-delete-div a {
+.edit-delete-div a, .edit-delete-div button{
+  font-family: Helvetica, sans-serif;
+  font-weight: normal;
   text-decoration: none;
   font-size: small;
+}
+
+.edit-delete-div a {
   margin-bottom: 10px;
 }
 
 .edit-delete-div a:hover {
   color: green;
 }
+
 .edit-delete-div button {
-  font-size: small;
+
   border: none;
   background: none;
   cursor: pointer;
