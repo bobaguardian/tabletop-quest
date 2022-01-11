@@ -5,6 +5,10 @@
   padding: 0;
 }
 
+html {
+  min-width: 1000px;
+}
+
 body {
   font-family: BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
   background-color: #181A1B;
