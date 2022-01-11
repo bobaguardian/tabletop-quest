@@ -3,9 +3,8 @@ import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts, removeProduct } from "../../store/products";
 import './ProductList.css';
-import ProductForm from "../ProductForm";
 import { Modal } from '../../context/Modal';
-import ProductProfile from "../ProductProfileModal";
+import ProductProfile from "../ProductProfile";
 
 const ProductList = () => {
   const dispatch = useDispatch();
