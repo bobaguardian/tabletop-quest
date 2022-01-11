@@ -42,23 +42,43 @@
 
 }
 
-
 .product-detail-div {
   padding-left: 30px;
   width: 80%;
   height: 70%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly ;
+  justify-content: space-between;
 }
 
-.edit-delete-div a, .edit-delete-div button{
-  margin-right: 10px;
+.edit-delete-menu {
+  position: relative;
+  top: 5px;
+  width: 30px;
+  padding: 3px 3px;
+  margin-left: 5px;
 }
+.edit-delete-menu:hover {
+  display: block;
+  border-radius: 5px;
+}
+
+.edit-delete-div {
+  position: absolute;
+  top: 15px;
+  width: 65px;
+  padding: 10px;
+  background-color:rgb(63, 63, 63);
+  border-radius: 5px;
+}
+
+/* .edit-delete-div a, .edit-delete-div button{
+  padding-bottom: 5px;
+} */
 
 .edit-delete-div a {
   text-decoration: none;
   font-size: small;
+  margin-bottom: 10px;
 }
 
 .edit-delete-div a:hover {

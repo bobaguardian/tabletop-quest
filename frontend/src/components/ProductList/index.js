@@ -18,6 +18,8 @@ const ProductList = () => {
     return new Date(b.updatedAt) - new Date(a.updatedAt);
   });
   const [showModal, setShowModal] = useState(false);
+  const [showEditDeleteMenu, setShowEditDeleteMenu] = useState(false);
+  const [edMenuId, setEdMenuId] = useState();
   const [profileModalId, setProfileModalId] = useState();
 
 
@@ -42,12 +44,22 @@ const ProductList = () => {
               <img src={imageSrc} alt={title} />
               <div className='product-detail-div'>
                 <h3>{title}</h3>
-                {(sessionUser && sessionUser.id === userId) ? (
-                  <div className='edit-delete-div'>
-                    <Link value={id} to={`/products/${id}/edit`}>Edit</Link>
-                    <button value={id} onClick={handleDelete}>Delete</button>
+                {(sessionUser && sessionUser.id === userId) ?
+                  <div>
+                    <i class="fas fa-ellipsis-h edit-delete-menu"
+                      onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
+                      onMouseLeave={() => setShowEditDeleteMenu(false)}>
+                      {(showEditDeleteMenu && (edMenuId === id)) ? (
+                        <div className='edit-delete-div'
+                          onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
+                          onMouseLeave={() => setShowEditDeleteMenu(false)}>
+                          <Link value={id} to={`/products/${id}/edit`}>Edit</Link>
+                          <button value={id} onClick={handleDelete}>Delete</button>
+                        </div>
+                      ) : null}
+                    </i>
                   </div>
-                ) : null}
+                : null }
               </div>
             </div>
           </>
