@@ -27,7 +27,10 @@ const Navigation = ({ isLoaded }) => {
   return (
     <nav>
       <div className='nav-links'>
-        <NavLink exact to='/'>Home</NavLink>
+        <div>
+          <NavLink exact to='/'>Home</NavLink>
+          <NavLink to='/products'>Products</NavLink>
+        </div>
         {isLoaded && sessionLinks}
       </div>
       <h1>Tabletop Quest</h1>

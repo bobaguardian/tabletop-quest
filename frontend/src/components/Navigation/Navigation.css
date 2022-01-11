@@ -29,7 +29,9 @@ nav h1 {
 }
 
 #submit-icon-div a {
-  margin: 0;
+  margin-right: 5%;
+  white-space: nowrap;
+
 }
 
 nav a {

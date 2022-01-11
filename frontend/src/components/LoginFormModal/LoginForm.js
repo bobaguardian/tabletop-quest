@@ -1,23 +1,25 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import './LoginForm.css';
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
   // // if user is logged in, redirect to home page
-  // if (sessionUser) return <Redirect to='/' />;
+  if (sessionUser) return history.push('/products');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
     return dispatch(sessionActions.login({email, password}))
+      .then((res) => history.push('/products'))
       .catch(async(res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
@@ -27,10 +29,10 @@ const LoginFormPage = () => {
 
   const demo = (e) => {
     e.preventDefault();
-    return dispatch(sessionActions.login({
+    dispatch(sessionActions.login({
       email: 'demo@user.io',
       password: 'imdebestmouse'
-    }))
+    })).then((res) => history.push('/products'));
   }
 
   return (

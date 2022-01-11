@@ -27,7 +27,7 @@ const ProductList = () => {
       <h2>Product List</h2>
       <ul>
         {products.map(({id, userId, title, imageSrc, description, updatedAt}) => (
-          <div key={id} className='product-div'>
+          <div key={`product-${id}`}  className='product-div'>
             <img src={imageSrc} alt={title} />
             <div className='product-detail-div'>
               <h3>{title}</h3>

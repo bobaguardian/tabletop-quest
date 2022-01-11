@@ -1,0 +1,29 @@
+#splash-div img {
+  position: absolute;
+  width: 100%;
+  height: 89%;
+  opacity: 0.4;
+  z-index: -1;
+}
+
+#splash-banner {
+  width: 100%;
+  text-align: center;
+  padding: 50px;
+  position: absolute;
+  top: 35%;
+  background-color: rgba(15, 16, 17, 0.7);
+}
+
+#splash-banner h2 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+#splash-banner a {
+  text-decoration: none;
+}
+
+#splash-banner a:hover {
+  border-bottom: 1px solid wheat;
+}
