@@ -22,7 +22,6 @@ const ProductList = () => {
   const [edMenuId, setEdMenuId] = useState();
   const [profileModalId, setProfileModalId] = useState();
 
-
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
@@ -51,20 +50,18 @@ const ProductList = () => {
               <div className='product-detail-div'>
                 <h3>{title}</h3>
                 {(sessionUser && sessionUser.id === userId) ?
-                  <div>
-                    <i class="fas fa-ellipsis-h edit-delete-menu"
-                      onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
-                      onMouseLeave={() => setShowEditDeleteMenu(false)}>
-                      {(showEditDeleteMenu && (edMenuId === id)) ? (
-                        <div className='edit-delete-div'
-                          onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
-                          onMouseLeave={() => setShowEditDeleteMenu(false)}>
-                          <Link value={id} to={`/products/${id}/edit`}>Edit</Link>
-                          <button value={id} onClick={handleDelete}>Delete</button>
-                        </div>
-                      ) : null}
-                    </i>
-                  </div>
+                  <i class="fas fa-ellipsis-h edit-delete-menu"
+                    onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
+                    onMouseLeave={() => setShowEditDeleteMenu(false)}>
+                    {(showEditDeleteMenu && (edMenuId === id)) ? (
+                      <div className='edit-delete-div'
+                        onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
+                        onMouseLeave={() => setShowEditDeleteMenu(false)}>
+                        <Link value={id} to={`/products/${id}/edit`}>Edit</Link>
+                        <button value={id} onClick={handleDelete}>Delete</button>
+                      </div>
+                    ) : null}
+                  </i>
                 : null }
               </div>
             </div>
@@ -73,8 +70,8 @@ const ProductList = () => {
         ))}
       </ul>
         {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            <ProductProfile productsObj={productsObj} productId={profileModalId}/>
+          <Modal id='product-modal' onClose={() => setShowModal(false)}>
+            <ProductProfile productsObj={productsObj} productId={profileModalId} sessionUser={sessionUser} onClose={() => setShowModal(false)}/>
           </Modal>
           )}
     </div>
