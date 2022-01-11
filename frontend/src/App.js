@@ -41,7 +41,9 @@ function App() {
             <ProductForm type='update' productsObj={productsObj}/>
           </Route>
           <Route>
-            Not Found
+            <div id='page-not-found'>
+              <h3>404: Page Not Found</h3>
+            </div>
           </Route>
         </Switch>
       )}
