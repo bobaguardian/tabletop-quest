@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 
-const { Product, User } = require('../../db/models');
+const { Product, User, Discussion } = require('../../db/models');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
@@ -104,5 +104,19 @@ router.get('/:id', asyncHandler(async (req, res) => {
   return res.json({ message: 'no product found'});
 }))
 
+
+// GET /products/:id/discussions
+// Gets all discussions of that associated prodcutId
+router.get('/:id/discussions', asyncHandler(async (req, res) => {
+  const productId = parseInt(req.params.id, 10);
+  const discussions = await Discussion.findAll({
+    where: { productId },
+    include: User,
+    order: [['updatedAt', "DESC"]]
+  });
+
+  return res.json({ discussions });
+
+}));
 
 module.exports = router;
