@@ -66,10 +66,28 @@ router.post('/', validateDiscussion, restoreUser, asyncHandler(async(req, res, n
 }));
 
 // DELETE /discussions/:id
-router.delete('/:id', asyncHandler(async (req, res, next) => {
+router.delete('/:id', restoreUser, asyncHandler(async (req, res, next) => {
+  const { user } = req;
+  if (!user) {
+    const err = new Error('You are not logged in');
+    err.status = 401;
+    err.title = 'You are not logged in';
+    err.errors = ['Cannot create discussion if you are not logged in'];
+    return next(err);
+  }
+
+
   const id = parseInt(req.params.id, 10);
   const discussion = await Discussion.findByPk(id);
   if (discussion) {
+    if (user.id !== discussion.userId) {
+      const err = new Error('You are not the owner of this discussion');
+      err.status = 403;
+      err.title = 'You are not the owner of this discussion';
+      err.errors = ['Cannot delete discussion: You are not the owner of this discussion'];
+      return next(err);
+    }
+    console.log(user.id, discussion.userId);
     await discussion.destroy();
     return res.json({ message: 'delete successful' });
   }
