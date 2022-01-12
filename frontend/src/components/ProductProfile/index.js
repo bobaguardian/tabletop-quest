@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory, Redirect } from 'react-router-dom';
-import './ProductProfile.css';
 import { removeProduct } from '../../store/products';
+import DiscussionForm from '../DiscussionForm';
+import DiscussionList from '../DiscussionList';
+import './ProductProfile.css';
 
 const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
   const [showEditDeleteMenu, setShowEditDeleteMenu] = useState(false);
@@ -51,6 +53,10 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
       <div id='product-profile-details'>
         <h3>Description</h3>
         <p>{description}</p>
+      </div>
+      <div>
+        <DiscussionForm />
+        <DiscussionList />
       </div>
     </div>
   );
