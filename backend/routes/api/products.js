@@ -104,7 +104,6 @@ router.get('/:id', asyncHandler(async (req, res) => {
   return res.json({ message: 'no product found'});
 }))
 
-
 // GET /products/:id/discussions
 // Gets all discussions of that associated prodcutId
 router.get('/:id/discussions', asyncHandler(async (req, res) => {
