@@ -20,13 +20,13 @@ Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a socia
 ## Application Screenshots
 
 ### Splash Page
-![Splash Page](./frontend/public/images/splash-page.jpg)
+![Splash Page](https://github.com/bobaguardian/tabletop-quest/blob/main/frontend/public/images/splash-page.JPG)
 
 ### Products Page
-![Products Page](./frontend/public/images/products-list.jpg)
+![Products Page](https://github.com/bobaguardian/tabletop-quest/blob/main/frontend/public/images/product-list.jpg)
 
 ### Product Profile Modal
-![Product Profile Modal](./frontend/public/images/product-modal.jpg)
+![Product Profile Modal](https://github.com/bobaguardian/tabletop-quest/blob/main/frontend/public/images/product-modal.JPG)
 
 ## Local Machine Launch Instructions
 * Clone the tabletop-quest repo
