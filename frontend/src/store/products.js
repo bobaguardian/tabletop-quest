@@ -22,13 +22,6 @@ export const createProduct = (product) => {
   };
 }
 
-export const deleteProduct = (id) => {
-  return {
-    type: DELETE_PRODUCT,
-    id
-  };
-}
-
 export const updateProduct = (id, product) => {
   return {
     type: UPDATE_PRODUCT,
@@ -37,6 +30,13 @@ export const updateProduct = (id, product) => {
   };
 }
 
+export const deleteProduct = (id) => {
+  return {
+    type: DELETE_PRODUCT,
+    id
+  };
+
+}
 export const readOneProduct = (id) => {
   return {
     type: READ_ONE_PRODUCT,

@@ -55,8 +55,8 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
         <p>{description}</p>
       </div>
       <div>
-        <DiscussionForm />
-        <DiscussionList />
+        {(sessionUser) ? <DiscussionForm productId={productId} userId={sessionUser.id}/> : null}
+        <DiscussionList productId={productId}/>
       </div>
     </div>
   );
