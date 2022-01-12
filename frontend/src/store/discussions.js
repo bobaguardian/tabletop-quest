@@ -65,6 +65,16 @@ export const submitDiscussion = (discussionDetails) => async(dispatch) => {
   return response;
 }
 
+// DELETE
+export const removeDiscussion = (id) => async (dispatch) => {
+  const response = await csrfFetch(`/api/discussions/${id}`, {
+    method: 'DELETE'
+  });
+  const data = await response.json();
+  dispatch(deleteDiscussion(id));
+  return data;
+}
+
 const initialState = { entries: {} }
 
 const discussionsReducer = (state = initialState, action) => {
@@ -80,6 +90,11 @@ const discussionsReducer = (state = initialState, action) => {
     case CREATE_DISCUSSION:
       newState = {...state};
       newState.entries = {[action.discussion.id]: action.discussion, ...newState.entries};
+      return newState;
+    case DELETE_DISCUSSION:
+      newState = { ...state };
+      delete newState.entries[action.id];
+      newState.entries = {...newState.entries };
       return newState;
     default:
       return state;

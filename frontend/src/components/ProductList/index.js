@@ -69,7 +69,7 @@ const ProductList = () => {
         ))}
       </ul>
         {showModal && (
-          <Modal id='product-modal' onClose={() => setShowModal(false)}>
+          <Modal key='product-modal' onClose={() => setShowModal(false)}>
             <ProductProfile productsObj={productsObj} productId={profileModalId} sessionUser={sessionUser} onClose={() => setShowModal(false)}/>
           </Modal>
           )}

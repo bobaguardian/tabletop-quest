@@ -19,6 +19,9 @@ const DiscussionForm = ({ productId, userId }) => {
 
     setErrors([]);
     dispatch(submitDiscussion(discussionDetails))
+      .then((res) => {
+        setDiscussion('');
+      })
       .catch(async(res) => {
         const data = await res.json();
         if (data && data.errors) return setErrors(data.errors);
@@ -29,12 +32,11 @@ const DiscussionForm = ({ productId, userId }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Hello from DiscussionForm!</h2>
       <ul className='errors-ul'>
         {errors.map((error, idx) => <li key={idx}>* {error} *</li>)}
       </ul>
       <div className='form-ele'>
-        <label htmlFor='discussion'>Discussion</label>
+        <label htmlFor='discussion'>What are your thoughts?</label>
         <textarea
             onChange={(e) => setDiscussion(e.target.value)}
             value={discussion}
