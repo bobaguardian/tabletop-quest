@@ -72,8 +72,6 @@ h3 {
 }
 
 #warrior-mouse-div img {
-  border-radius: 7px;
   width: 250px;
-  background-color: white;
-  padding: 10px;
+  border-radius: 10px;
 }
