@@ -1,6 +1,32 @@
-# Tabletop Quest
 
-Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a social media application that allows users to browse table top games, create posts for the games and participate in discussions about specific games.
+# [Tabletop Quest](https://tabletopquest.herokuapp.com/)
+
+Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a social media application that allows users to browse table top games and create posts for the game products.
+
+[See the site live here!](https://tabletopquest.herokuapp.com/)
+
+## Table of Contents
+* [MVP Feature List Document](https://github.com/bobaguardian/tabletop-quest/wiki/MVP-Feature-List)
+* [React Components List](https://github.com/bobaguardian/tabletop-quest/wiki/React-Components)
+* [Database Schema](https://github.com/bobaguardian/tabletop-quest/wiki/Database-Schema)
+* [Frontend Routes](https://github.com/bobaguardian/tabletop-quest/wiki/Frontend-Routes)
+* [API Routes](https://github.com/bobaguardian/tabletop-quest/wiki/API-Documentation)
+* [Application Screenshots](https://github.com/bobaguardian/tabletop-quest#application-screenshots)
+* [Technologies Used](https://github.com/bobaguardian/tabletop-quest#technologies-used)
+* [Future Implementations](https://github.com/bobaguardian/tabletop-quest#future-implementations)
+* [Redux Store Tree](https://github.com/bobaguardian/tabletop-quest#redux-store-tree)
+
+
+## Application Screenshots
+
+### Splash Page
+![Splash Page](./frontend/public/images/splash-page.jpg)
+
+### Products Page
+![Products Page](./frontend/public/images/products-list.jpg)
+
+### Product Profile Modal
+![Product Profile Modal](./frontend/public/images/product-modal.jpg)
 
 ## Local Machine Launch Instructions
 * Clone the tabletop-quest repo
@@ -20,4 +46,24 @@ Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a socia
   * Move into the `frontend` folder
     * Run `npm install`
     * Then Run `npm start`
-### Awesome! Now you can navigate to http://localhost:3000 and use the application!
+#### Awesome! Now you can navigate to http://localhost:3000 and use the application!
+
+## Technologies Used
+* NodeJS
+* Express
+* PostgreSQL
+* Sequelize
+* React
+* Redux
+
+## Future Implementations
+* Add a discussion feature so that users can partake in discussions for specific products
+* Add a search feature for products
+* Add an upvote feature for products
+
+## Redux Store Tree
+
+    state: {
+	    session: { user },
+	    products: { entries }
+    }
