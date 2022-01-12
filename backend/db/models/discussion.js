@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       references: { model: 'Products' }
     },
     discussion: {
-      tye: DataTypes.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false
     }
   }, {});
