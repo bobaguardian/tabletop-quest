@@ -76,7 +76,6 @@ router.delete('/:id', restoreUser, asyncHandler(async (req, res, next) => {
     return next(err);
   }
 
-
   const id = parseInt(req.params.id, 10);
   const discussion = await Discussion.findByPk(id);
   if (discussion) {
@@ -93,6 +92,38 @@ router.delete('/:id', restoreUser, asyncHandler(async (req, res, next) => {
   }
 
   return res.json({ message: 'no discussion found' });
+}));
+
+// PUT /discussions/:id
+router.put('/:id', restoreUser, validateDiscussion, asyncHandler(async (req, res, next) => {
+  const id = parseInt(req.params.id, 10);
+
+  const { user } = req;
+
+  const { discussion } = req.body;
+  const discussiondb = await Discussion.findByPk(id);
+
+  if (discussiondb) {
+    // server validation: ensure logged in user is owner of discussion
+    if (user?.id !== discussiondb.userId) {
+      const err = new Error('You are not the owner of this discussion');
+      err.status = 403;
+      err.title = 'You are not the owner of this discussion';
+      err.errors = ['You are not the owner of this discussion'];
+      return next(err);
+    }
+
+    await discussiondb.update({
+      userId: discussiondb.userId,
+      productId: discussiondb.productId,
+      discussion
+    });
+    await discussiondb.save();
+    return res.json({ message: 'update successful' });
+  }
+
+  return res.json({ messsage: 'no discussion found' });
+
 }));
 
 module.exports = router;

@@ -62,10 +62,9 @@ router.post('/', validateProduct, asyncHandler(async (req, res) => {
 // PUT /products/:id
 router.put('/:id', validateProduct, asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id, 10);
-  const {  title, description, imageSrc } = req.body
+  const {  title, description, imageSrc } = req.body;
   const product = await Product.findByPk(id);
 
-  // TODO: MAKE SURE TO FORM PREFILL ON FRONTEND
   // fetch request requires all fields (userId, title, description, imageSrc)
   if (product) {
     await product.update({
@@ -78,8 +77,6 @@ router.put('/:id', validateProduct, asyncHandler(async (req, res) => {
   }
 
   return res.json({ message: 'no product found' });
-
-
 }));
 
 // DELETE /products/:id
