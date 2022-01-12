@@ -23,4 +23,6 @@
   width: 400px;
   position: absolute;
   background-color: beige;
+  max-height: 90vh;
+  overflow-y: auto;
 }

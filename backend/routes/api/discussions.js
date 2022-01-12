@@ -62,7 +62,11 @@ router.post('/', validateDiscussion, restoreUser, asyncHandler(async(req, res, n
     discussion
   });
 
-  return res.json({ discussion: discussiondb });
+  const discussionWithUser = await Discussion.findByPk(discussiondb.id, {
+    include: User
+  })
+
+  return res.json({ discussion: discussionWithUser });
 }));
 
 // DELETE /discussions/:id

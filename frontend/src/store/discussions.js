@@ -46,6 +46,25 @@ export const getDiscussionsForProduct = (productId) => async(dispatch) => {
   return data;
 }
 
+// CREATE
+export const submitDiscussion = (discussionDetails) => async(dispatch) => {
+  const { userId, productId, discussion } = discussionDetails;
+  const response = await csrfFetch('/api/discussions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userId,
+      productId,
+      discussion
+    })
+  });
+  const data = await response.json();
+  dispatch(createDiscussion(data.discussion));
+  return response;
+}
+
 const initialState = { entries: {} }
 
 const discussionsReducer = (state = initialState, action) => {
@@ -57,6 +76,10 @@ const discussionsReducer = (state = initialState, action) => {
         entries[discussion.id] = discussion;
         return entries;
       }, {});
+      return newState;
+    case CREATE_DISCUSSION:
+      newState = {...state};
+      newState.entries = {[action.discussion.id]: action.discussion, ...newState.entries};
       return newState;
     default:
       return state;

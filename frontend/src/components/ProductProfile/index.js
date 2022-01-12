@@ -1,16 +1,24 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, Redirect } from 'react-router-dom';
 import { removeProduct } from '../../store/products';
+import { getDiscussionsForProduct } from '../../store/discussions';
 import DiscussionForm from '../DiscussionForm';
 import DiscussionList from '../DiscussionList';
 import './ProductProfile.css';
 
 const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
+  const discussionsObj = useSelector((state) => state.discussions.entries);
   const [showEditDeleteMenu, setShowEditDeleteMenu] = useState(false);
   const [edMenuId, setEdMenuId] = useState();
+  const [seeDiscussions, setSeeDiscussions] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  useEffect(() => {
+    dispatch(getDiscussionsForProduct(productId));
+  }, [dispatch]);
+
 
   const {userId, title, imageSrc, description, updatedAt, createdAt} = productsObj[productId];
 
@@ -55,8 +63,10 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
         <p>{description}</p>
       </div>
       <div>
-        {(sessionUser) ? <DiscussionForm productId={productId} userId={sessionUser.id}/> : null}
-        <DiscussionList productId={productId}/>
+        <button onClick={(e) => {setSeeDiscussions(true); e.target.style.display = 'none';}}>See Discussions</button>
+        {(seeDiscussions && sessionUser) ? <DiscussionForm productId={productId} userId={sessionUser.id}/> : null}
+        { seeDiscussions ? (<DiscussionList discussionsObj={discussionsObj} productId={productId}/>) : null}
+        {/* <DiscussionList discussionsObj={discussionsObj} productId={productId}/> */}
       </div>
     </div>
   );
