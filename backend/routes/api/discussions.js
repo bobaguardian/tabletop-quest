@@ -65,4 +65,16 @@ router.post('/', validateDiscussion, restoreUser, asyncHandler(async(req, res, n
   return res.json({ discussion: discussiondb });
 }));
 
+// DELETE /discussions/:id
+router.delete('/:id', asyncHandler(async (req, res, next) => {
+  const id = parseInt(req.params.id, 10);
+  const discussion = await Discussion.findByPk(id);
+  if (discussion) {
+    await discussion.destroy();
+    return res.json({ message: 'delete successful' });
+  }
+
+  return res.json({ message: 'no discussion found' });
+}));
+
 module.exports = router;
