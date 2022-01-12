@@ -29,7 +29,15 @@ function App() {
             <SplashPage />
           </Route>
           <Route exact path='/products'>
-            <ProductList />
+            <div id='productlist-warrior-mouse'>
+              <div id='product-list-div'>
+                <ProductList />
+              </div>
+              <div id='warrior-mouse-div'>
+                <img src='https://res.cloudinary.com/tabletopquest/image/upload/v1641948485/products/vector-pixel-art-isolated-cartoon-vector-id1005900692_pmfe7e.jpg' alt='warrior-mouse' />
+                <h3>Good luck on your quest!</h3>
+              </div>
+            </div>
           </Route>
           <Route path='/signup'>
             <SignupFormPage />

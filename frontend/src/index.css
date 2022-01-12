@@ -50,3 +50,30 @@ h3 {
 .demo-btn:hover {
   background-color: rgb(249, 125, 73);
 }
+
+#product-list-div {
+  width: 60%;
+}
+
+#productlist-warrior-mouse {
+  display: flex;
+  justify-content: space-between;
+}
+#warrior-mouse-div {
+  position: fixed;
+  top: 30%;
+  right: 9%;
+  width: 250px;
+}
+
+#warrior-mouse-div h3 {
+  padding-top: 5px;
+  text-align: center;
+}
+
+#warrior-mouse-div img {
+  border-radius: 7px;
+  width: 250px;
+  background-color: white;
+  padding: 10px;
+}
