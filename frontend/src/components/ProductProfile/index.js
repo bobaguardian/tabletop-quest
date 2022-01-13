@@ -6,6 +6,7 @@ import { getDiscussionsForProduct } from '../../store/discussions';
 import DiscussionForm from '../DiscussionForm';
 import DiscussionList from '../DiscussionList';
 import './ProductProfile.css';
+import '../DiscussionForm/DiscussionForm.css';
 
 const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
   const discussionsObj = useSelector((state) => state.discussions.entries);

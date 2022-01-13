@@ -54,7 +54,7 @@ const DiscussionForm = ({ type, discussionsObj, productId, userId, discussionId,
         {errors.map((error, idx) => <li key={idx}>* {error} *</li>)}
       </ul>
       <div className='form-ele' className='discussion-form-div'>
-        <label htmlFor='discussion'>What are your thoughts?</label>
+        { type === 'create' ? <label htmlFor='discussion'>What are your thoughts?</label> : null}
         <div>
           <textarea
               onChange={(e) => setDiscussion(e.target.value)}
@@ -63,7 +63,7 @@ const DiscussionForm = ({ type, discussionsObj, productId, userId, discussionId,
               required
               id='discussion'
               rows='4'
-              cols='90'
+              cols='85'
             />
           <button className='form-ele' type='submit'>Send</button>
 

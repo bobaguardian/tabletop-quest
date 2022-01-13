@@ -35,24 +35,26 @@ const DiscussionList = ({ discussionsObj, productId }) => {
       {discussions.map(({id, userId, productId, discussion, createdAt, updatedAt, User}) => {
         return (
           <div key={`discussion-${id}`} className='discussion-box'>
-            <h3>{User.username}</h3>
-            <p>{discussion}</p>
-            <p>{new Date(createdAt).toLocaleString()}</p>
+            <div>
+              <h3>{User.username}</h3>
+              {(sessionUser?.id === userId) ?
+                <i class="fas fa-ellipsis-h discussion-edit-delete-menu"
+                  onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
+                  onMouseLeave={() => setShowEditDeleteMenu(false)}>
+                  {(showEditDeleteMenu && (edMenuId === id)) ? (
+                    <div className='discussion-edit-delete-div'
+                      onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
+                      onMouseLeave={() => setShowEditDeleteMenu(false)}>
+                      <button className='edit-btn' value={id} onClick={() => {setShowEditForm(true); setEditDiscussionId(id)}}>Edit</button>
+                      <button className='delete-btn' value={id} onClick={handleDelete}>Delete</button>
+                    </div>
+                  ) : null}
+                </i>
+              : null }
+            </div>
+            <p className='discussion-date'>{new Date(createdAt).toLocaleString()}</p>
+            <p className='actual-discussion'>{discussion}</p>
 
-            {(sessionUser?.id === userId) ?
-              <i class="fas fa-ellipsis-h edit-delete-menu"
-                onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
-                onMouseLeave={() => setShowEditDeleteMenu(false)}>
-                {(showEditDeleteMenu && (edMenuId === id)) ? (
-                  <div className='edit-delete-div'
-                    onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
-                    onMouseLeave={() => setShowEditDeleteMenu(false)}>
-                    <button value={id} onClick={() => {setShowEditForm(true); setEditDiscussionId(id)}}>Edit</button>
-                    <button value={id} onClick={handleDelete}>Delete</button>
-                  </div>
-                ) : null}
-              </i>
-            : null }
             { (showEditForm && editDiscussionId === id ) ? <DiscussionForm type='update' discussionsObj={discussionsObj} discussionId={editDiscussionId} userId={userId} productId={productId} setShowEditForm={setShowEditForm}/> : null }
 
           </div>

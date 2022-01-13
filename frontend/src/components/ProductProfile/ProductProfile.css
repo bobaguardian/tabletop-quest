@@ -67,6 +67,8 @@
 .discussion-section {
   margin: 20px;
   width: auto;
+  margin-top: 50px;
+  margin-bottom: 35px;
 }
 
 #see-discussions-btn {
