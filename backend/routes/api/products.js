@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 
-const { Product, User } = require('../../db/models');
+const { Product, User, Discussion } = require('../../db/models');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
@@ -62,10 +62,9 @@ router.post('/', validateProduct, asyncHandler(async (req, res) => {
 // PUT /products/:id
 router.put('/:id', validateProduct, asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id, 10);
-  const {  title, description, imageSrc } = req.body
+  const {  title, description, imageSrc } = req.body;
   const product = await Product.findByPk(id);
 
-  // TODO: MAKE SURE TO FORM PREFILL ON FRONTEND
   // fetch request requires all fields (userId, title, description, imageSrc)
   if (product) {
     await product.update({
@@ -78,8 +77,6 @@ router.put('/:id', validateProduct, asyncHandler(async (req, res) => {
   }
 
   return res.json({ message: 'no product found' });
-
-
 }));
 
 // DELETE /products/:id
@@ -87,6 +84,16 @@ router.delete('/:id', asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id, 10);
   const product = await Product.findByPk(id);
   if (product) {
+    // Destroy all Discussions for the product first
+    const discussions = await Discussion.findAll({
+      where: {productId: id}
+    });
+
+    for (let i = 0; i < discussions.length; i++) {
+      const discussion = discussions[i];
+      await discussion.destroy();
+    }
+
     await product.destroy();
     return res.json({ message: 'delete successful' });
   }
@@ -104,5 +111,18 @@ router.get('/:id', asyncHandler(async (req, res) => {
   return res.json({ message: 'no product found'});
 }))
 
+// GET /products/:id/discussions
+// Gets all discussions of that associated prodcutId
+router.get('/:id/discussions', asyncHandler(async (req, res) => {
+  const productId = parseInt(req.params.id, 10);
+  const discussions = await Discussion.findAll({
+    where: { productId },
+    include: User,
+    order: [['updatedAt', "DESC"]]
+  });
+
+  return res.json({ discussions });
+
+}));
 
 module.exports = router;

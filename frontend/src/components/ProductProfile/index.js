@@ -1,16 +1,27 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory, Redirect } from 'react-router-dom';
-import './ProductProfile.css';
 import { removeProduct } from '../../store/products';
+import { getDiscussionsForProduct } from '../../store/discussions';
+import DiscussionForm from '../DiscussionForm';
+import DiscussionList from '../DiscussionList';
+import './ProductProfile.css';
+import '../DiscussionForm/DiscussionForm.css';
 
 const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
+  const discussionsObj = useSelector((state) => state.discussions.entries);
   const [showEditDeleteMenu, setShowEditDeleteMenu] = useState(false);
   const [edMenuId, setEdMenuId] = useState();
+  const [seeDiscussions, setSeeDiscussions] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const {userId, title, imageSrc, description, updatedAt, createdAt} = productsObj[productId];
+  useEffect(() => {
+    dispatch(getDiscussionsForProduct(productId));
+  }, [dispatch]);
+
+
+  const {userId, title, imageSrc, description, updatedAt, createdAt, User} = productsObj[productId];
 
   const handleDelete = (e) => {
     e.stopPropagation();
@@ -28,7 +39,7 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
           <div className='flex'>
             <h2>{title}</h2>
             {(sessionUser && sessionUser.id === userId) ?
-              <i class="fas fa-ellipsis-h edit-delete-menu-profile"
+              <i className="fas fa-ellipsis-h edit-delete-menu-profile"
                 onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(productId);}}
                 onMouseLeave={() => setShowEditDeleteMenu(false)}>
                 {(showEditDeleteMenu && (edMenuId === productId)) ? (
@@ -42,6 +53,7 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
               </i>
             : null }
           </div>
+          <p>By {User.username}</p>
           {(createdAt === updatedAt) ?
             <p>Posted {new Date(createdAt).toLocaleString()}</p> :
             <p>Last Edit {new Date(updatedAt).toLocaleString()}</p>
@@ -51,6 +63,11 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
       <div id='product-profile-details'>
         <h3>Description</h3>
         <p>{description}</p>
+      </div>
+      <div className='discussion-section'>
+        <button id='see-discussions-btn' onClick={(e) => {setSeeDiscussions(true); e.target.style.display = 'none';}}>See Discussions</button>
+        {(seeDiscussions && sessionUser) ? <DiscussionForm type='create' discussionsObj={discussionsObj} productId={productId} userId={sessionUser.id}/> : null}
+        { seeDiscussions ? (<DiscussionList discussionsObj={discussionsObj} productId={productId}/>) : null}
       </div>
     </div>
   );

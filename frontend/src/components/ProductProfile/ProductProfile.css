@@ -18,10 +18,8 @@
   position: relative;
   top: 5px;
   padding: 7px;
-  /* width: 30px;
-  padding: 3px 3px;
-  margin-left: 5px; */
 }
+
 .edit-delete-menu-profile:hover {
   display: block;
   border-radius: 5px;
@@ -64,4 +62,25 @@
   border-radius: 7px;
   margin-left: 250px;
   margin-right: 250px;
+}
+
+.discussion-section {
+  margin: 20px;
+  width: auto;
+  margin-top: 50px;
+  margin-bottom: 35px;
+}
+
+#see-discussions-btn {
+  width: 30%;
+  margin-left: 35%;
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid rgba(63, 63, 63, 0.3);
+  transition: background-color 0.1s ease-in-out;
+}
+
+#see-discussions-btn:hover {
+  background-color:rgb(249, 125, 73);
+  border-color:rgb(249, 125, 73);
 }

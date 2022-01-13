@@ -28,7 +28,6 @@
 
 .submit-product-form button:hover {
   background-color:rgb(249, 125, 73);
-
 }
 
 textarea {
@@ -44,4 +43,23 @@ textarea:focus {
   outline: none;
   border: 1px solid rgb(249, 125, 73);
   box-shadow: 0 0 5px rgb(249, 125, 73);
+}
+
+@media screen and (max-width: 900px) {
+  .submit-product-div {
+    margin: 100px 20%;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .submit-product-div {
+    margin: 100px 12%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .submit-product-div {
+    margin: 100px 5%;
+    padding: 40px 20px;
+  }
 }

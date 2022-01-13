@@ -11,11 +11,14 @@
   height: 100px;
 }
 
+.nav-links a {
+  font-size: 20px;
+}
+
 nav h1 {
-  width: 100%;
   text-align: center;
-  vertical-align: middle;
   line-height: 90px;
+  font-size: 30px;
 }
 
 #login-signup-div a {
@@ -58,10 +61,14 @@ nav button {
 #logout-btn {
   margin-left: 0px;
   margin-right: 0px;
-  border-radius: 7%;
+  margin-top: 5px;
+  border-radius: 3px;
   border: 1px solid rgba(249, 125, 73, 0.5);
-  padding: 3px;
+  padding: 5px 7px;
   transition: color 0.15s, background-color 0.15s ease-in-out;
+  font-family: BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+  font-weight: normal;
+  font-size: 15px;
 }
 
 #logout-btn:hover {
@@ -86,7 +93,6 @@ ul li{
   position: absolute;
   top: 65px;
   right: 10px;
-  /* margin: 20px; */
   padding-top: 33px;
   visibility: hidden;
   opacity: 0;
@@ -113,6 +119,7 @@ ul li{
 #profile-dropdown-div li {
   padding: 4px;
 }
+
 #email-dropdown {
   border-bottom: 1px solid rgb(203, 198, 191);
 }
@@ -122,4 +129,14 @@ ul li{
   border: none;
 
   background: none;
+}
+
+@media screen and (max-width: 900px) {
+  h1 {
+    visibility: hidden;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+  }
 }

@@ -22,13 +22,6 @@ export const createProduct = (product) => {
   };
 }
 
-export const deleteProduct = (id) => {
-  return {
-    type: DELETE_PRODUCT,
-    id
-  };
-}
-
 export const updateProduct = (id, product) => {
   return {
     type: UPDATE_PRODUCT,
@@ -37,6 +30,13 @@ export const updateProduct = (id, product) => {
   };
 }
 
+export const deleteProduct = (id) => {
+  return {
+    type: DELETE_PRODUCT,
+    id
+  };
+
+}
 export const readOneProduct = (id) => {
   return {
     type: READ_ONE_PRODUCT,
@@ -105,9 +105,9 @@ export const editProduct = (id, product) => async (dispatch) => {
 export const getSingleProduct = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/products/${id}`);
   const data = await response.json();
-  //dispatch(getSingleProduct(id));
   return data;
 }
+
 
 
 const initialState = { entries: {} }
