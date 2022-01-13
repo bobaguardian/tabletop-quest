@@ -109,6 +109,7 @@ export const getSingleProduct = (id) => async (dispatch) => {
 }
 
 
+
 const initialState = { entries: {} }
 
 const productsReducer = (state = initialState, action) => {

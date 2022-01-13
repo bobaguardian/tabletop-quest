@@ -22,7 +22,7 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
   }, [dispatch]);
 
 
-  const {userId, title, imageSrc, description, updatedAt, createdAt} = productsObj[productId];
+  const {userId, title, imageSrc, description, updatedAt, createdAt, User} = productsObj[productId];
 
   const handleDelete = (e) => {
     e.stopPropagation();
@@ -40,7 +40,7 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
           <div className='flex'>
             <h2>{title}</h2>
             {(sessionUser && sessionUser.id === userId) ?
-              <i class="fas fa-ellipsis-h edit-delete-menu-profile"
+              <i className="fas fa-ellipsis-h edit-delete-menu-profile"
                 onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(productId);}}
                 onMouseLeave={() => setShowEditDeleteMenu(false)}>
                 {(showEditDeleteMenu && (edMenuId === productId)) ? (
@@ -54,7 +54,7 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
               </i>
             : null }
           </div>
-
+          <p>By {User.username}</p>
           {(createdAt === updatedAt) ?
             <p>Posted {new Date(createdAt).toLocaleString()}</p> :
             <p>Last Edit {new Date(updatedAt).toLocaleString()}</p>
