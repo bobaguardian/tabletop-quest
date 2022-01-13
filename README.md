@@ -60,7 +60,6 @@ Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a socia
 * Redux
 
 ## Future Implementations
-* Add a discussion feature so that users can partake in discussions for specific products
 * Add a search feature for products
 * Add an upvote feature for products
 
