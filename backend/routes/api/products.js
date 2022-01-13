@@ -84,6 +84,16 @@ router.delete('/:id', asyncHandler(async (req, res) => {
   const id = parseInt(req.params.id, 10);
   const product = await Product.findByPk(id);
   if (product) {
+    // Destroy all Discussions for the product first
+    const discussions = await Discussion.findAll({
+      where: {productId: id}
+    });
+
+    for (let i = 0; i < discussions.length; i++) {
+      const discussion = discussions[i];
+      await discussion.destroy();
+    }
+
     await product.destroy();
     return res.json({ message: 'delete successful' });
   }

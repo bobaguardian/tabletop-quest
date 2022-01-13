@@ -64,7 +64,7 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
       </div>
       <div>
         <button onClick={(e) => {setSeeDiscussions(true); e.target.style.display = 'none';}}>See Discussions</button>
-        {(seeDiscussions && sessionUser) ? <DiscussionForm productId={productId} userId={sessionUser.id}/> : null}
+        {(seeDiscussions && sessionUser) ? <DiscussionForm type='create' discussionsObj={discussionsObj} productId={productId} userId={sessionUser.id}/> : null}
         { seeDiscussions ? (<DiscussionList discussionsObj={discussionsObj} productId={productId}/>) : null}
       </div>
     </div>

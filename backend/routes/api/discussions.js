@@ -123,7 +123,12 @@ router.put('/:id', restoreUser, validateDiscussion, asyncHandler(async (req, res
       discussion
     });
     await discussiondb.save();
-    return res.json({ message: 'update successful' });
+
+    const discussionWithUser = await Discussion.findByPk(discussiondb.id, {
+      include: User
+    })
+
+    return res.json({ discussion: discussionWithUser });
   }
 
   return res.json({ messsage: 'no discussion found' });

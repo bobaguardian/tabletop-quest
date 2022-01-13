@@ -65,6 +65,25 @@ export const submitDiscussion = (discussionDetails) => async(dispatch) => {
   return response;
 }
 
+// UPDATE
+export const editDiscussion = (id, discussionDetails) => async(dispatch) => {
+  const {userId, productId, discussion} = discussionDetails;
+  const response = await csrfFetch(`/api/discussions/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userId,
+      productId,
+      discussion
+    })
+  });
+  const data = await response.json();
+  dispatch(updateDiscussion(id, discussionDetails));
+  return data;
+}
+
 // DELETE
 export const removeDiscussion = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/discussions/${id}`, {
@@ -81,15 +100,21 @@ const discussionsReducer = (state = initialState, action) => {
   let newState;
   switch(action.type) {
     case READ_DISCUSSIONS:
-      newState = {...state};
+      newState = { ...state };
       newState.entries = action.discussions.reduce((entries, discussion) => {
         entries[discussion.id] = discussion;
         return entries;
       }, {});
       return newState;
     case CREATE_DISCUSSION:
-      newState = {...state};
+      newState = { ...state };
       newState.entries = {[action.discussion.id]: action.discussion, ...newState.entries};
+      return newState;
+    case UPDATE_DISCUSSION:
+      newState = {
+        ...state,
+        entries: {[action.id]: action.discussion, ...state.entries}
+      };
       return newState;
     case DELETE_DISCUSSION:
       newState = { ...state };
