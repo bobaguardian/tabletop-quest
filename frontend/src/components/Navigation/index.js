@@ -28,8 +28,8 @@ const Navigation = ({ isLoaded }) => {
     <nav>
       <div className='nav-links'>
         <div>
-          <NavLink exact to='/'>Home</NavLink>
-          <NavLink to='/products'>Products</NavLink>
+          <NavLink id='home-nav' exact to='/'>Home</NavLink>
+          <NavLink id='products-nav' to='/products'>Products</NavLink>
         </div>
         {isLoaded && sessionLinks}
       </div>

@@ -11,11 +11,14 @@
   height: 100px;
 }
 
+.nav-links a {
+  font-size: 20px;
+}
+
 nav h1 {
-  width: 100%;
   text-align: center;
-  vertical-align: middle;
   line-height: 90px;
+  font-size: 30px;
 }
 
 #login-signup-div a {
@@ -122,4 +125,14 @@ ul li{
   border: none;
 
   background: none;
+}
+
+@media screen and (max-width: 900px) {
+  h1 {
+    visibility: hidden;
+  }
+
+  .nav-links a {
+    font-size: 16px;
+  }
 }
