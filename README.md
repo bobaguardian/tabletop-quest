@@ -1,7 +1,7 @@
 
 # [Tabletop Quest](https://tabletopquest.herokuapp.com/)
 
-Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a social media application that allows users to browse table top games and create posts for the game products.
+Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a social media application that allows users to browse table top games and create posts for the game products and participate in discussions of those games.
 
 [See the site live here!](https://tabletopquest.herokuapp.com/)
 
