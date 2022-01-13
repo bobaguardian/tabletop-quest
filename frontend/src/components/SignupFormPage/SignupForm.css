@@ -29,3 +29,15 @@
 .demo-btn:hover {
   background-color:rgb(249, 125, 73);
 }
+
+@media screen and (max-width: 900px) {
+  #signup-div {
+    margin: 100px 20%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #signup-div {
+    margin: 100px 10%;
+  }
+}
