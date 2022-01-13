@@ -31,7 +31,8 @@ const DiscussionList = ({ discussionsObj, productId }) => {
 
   return (
     <div className='discussion-list'>
-      <h2>Discussions</h2>
+      <h2>Discussions ({discussions.length})</h2>
+      {(discussions.length === 0) ? <p>There are no discussions for this game yet!</p> : null }
       {discussions.map(({id, userId, productId, discussion, createdAt, updatedAt, User}) => {
         return (
           <div key={`discussion-${id}`} className='discussion-box'>
