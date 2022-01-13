@@ -53,19 +53,22 @@ const DiscussionForm = ({ type, discussionsObj, productId, userId, discussionId,
       <ul className='errors-ul'>
         {errors.map((error, idx) => <li key={idx}>* {error} *</li>)}
       </ul>
-      <div className='form-ele'>
+      <div className='form-ele' className='discussion-form-div'>
         <label htmlFor='discussion'>What are your thoughts?</label>
-        <textarea
-            onChange={(e) => setDiscussion(e.target.value)}
-            value={discussion}
-            placeholder='Awesome game!'
-            required
-            id='discussion'
-            rows='7'
-            cols='50'
-          />
+        <div>
+          <textarea
+              onChange={(e) => setDiscussion(e.target.value)}
+              value={discussion}
+              placeholder='Awesome game!'
+              required
+              id='discussion'
+              rows='4'
+              cols='90'
+            />
+          <button className='form-ele' type='submit'>Send</button>
+
+        </div>
       </div>
-      <button className='form-ele' type='submit'>Send</button>
     </form>
   );
 }

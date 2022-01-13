@@ -1,0 +1,29 @@
+.discussion-form-div {
+  margin-top: 50px;
+  margin-bottom: 35px;
+}
+
+.discussion-form-div div{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.discussion-form-div textarea {
+  border-radius: 4px;
+}
+
+.discussion-form-div button {
+  display: inline;
+  width: 10%;
+  height: 30px;
+
+  border-radius: 3px;
+  border: 1px solid rgba(63, 63, 63, 0.3);
+  transition: background-color 0.1s ease-in-out;
+}
+
+.discussion-form-div button:focus,
+.discussion-form-div button:hover {
+  background-color:rgb(249, 125, 73);
+  border: 1px solid rgb(249, 125, 73);
+}
