@@ -62,8 +62,8 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
         <h3>Description</h3>
         <p>{description}</p>
       </div>
-      <div>
-        <button onClick={(e) => {setSeeDiscussions(true); e.target.style.display = 'none';}}>See Discussions</button>
+      <div className='discussion-section'>
+        <button id='see-discussions-btn' onClick={(e) => {setSeeDiscussions(true); e.target.style.display = 'none';}}>See Discussions</button>
         {(seeDiscussions && sessionUser) ? <DiscussionForm type='create' discussionsObj={discussionsObj} productId={productId} userId={sessionUser.id}/> : null}
         { seeDiscussions ? (<DiscussionList discussionsObj={discussionsObj} productId={productId}/>) : null}
       </div>
