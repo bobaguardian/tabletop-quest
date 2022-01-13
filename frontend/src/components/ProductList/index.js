@@ -42,30 +42,27 @@ const ProductList = () => {
     <div className='product-list-div'>
       <h2>Product List</h2>
       <ul>
-        {products.map(({id, userId, title, imageSrc, description, updatedAt, createdAt}) => (
-          <>
-            <div key={`product-${id}`}  className='product-div' onClick={() => {setShowModal(true); setProfileModalId(id)}}>
-              <img src={imageSrc} alt={title} />
-              <div className='product-detail-div'>
-                <h3>{title}</h3>
-                {(sessionUser && sessionUser.id === userId) ?
-                  <i class="fas fa-ellipsis-h edit-delete-menu"
-                    onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
-                    onMouseLeave={() => setShowEditDeleteMenu(false)}>
-                    {(showEditDeleteMenu && (edMenuId === id)) ? (
-                      <div className='edit-delete-div'
-                        onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
-                        onMouseLeave={() => setShowEditDeleteMenu(false)}>
-                        <Link value={id} to={`/products/${id}/edit`}>Edit</Link>
-                        <button value={id} onClick={handleDelete}>Delete</button>
-                      </div>
-                    ) : null}
-                  </i>
-                : null }
-              </div>
+        {products.map(({id, userId, title, imageSrc, description, updatedAt, createdAt}, index) => (
+          <div key={`product-${id}`}  className='product-div' onClick={() => {setShowModal(true); setProfileModalId(id)}}>
+            <img src={imageSrc} alt={title} />
+            <div className='product-detail-div'>
+              <h3>{title}</h3>
+              {(sessionUser && sessionUser.id === userId) ?
+                <i className="fas fa-ellipsis-h edit-delete-menu"
+                  onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
+                  onMouseLeave={() => setShowEditDeleteMenu(false)}>
+                  {(showEditDeleteMenu && (edMenuId === id)) ? (
+                    <div className='edit-delete-div'
+                      onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
+                      onMouseLeave={() => setShowEditDeleteMenu(false)}>
+                      <Link value={id} to={`/products/${id}/edit`}>Edit</Link>
+                      <button value={id} onClick={handleDelete}>Delete</button>
+                    </div>
+                  ) : null}
+                </i>
+              : null }
             </div>
-          </>
-
+          </div>
         ))}
       </ul>
         {showModal && (

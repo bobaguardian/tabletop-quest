@@ -105,7 +105,6 @@ export const editProduct = (id, product) => async (dispatch) => {
 export const getSingleProduct = (id) => async (dispatch) => {
   const response = await csrfFetch(`/api/products/${id}`);
   const data = await response.json();
-  //dispatch(getSingleProduct(id));
   return data;
 }
 

@@ -18,6 +18,7 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
 
   useEffect(() => {
     dispatch(getDiscussionsForProduct(productId));
+    console.log('products obj',productsObj);
   }, [dispatch]);
 
 
@@ -53,6 +54,7 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
               </i>
             : null }
           </div>
+
           {(createdAt === updatedAt) ?
             <p>Posted {new Date(createdAt).toLocaleString()}</p> :
             <p>Last Edit {new Date(updatedAt).toLocaleString()}</p>
