@@ -2,9 +2,9 @@
   margin-top: 8px;
 }
 #splash-div img {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: auto;
+  max-height: 100%;
   opacity: 0.4;
   z-index: -1;
 }
@@ -29,6 +29,26 @@
 
 #splash-banner a:hover {
   border-bottom: 1px solid wheat;
+}
+
+#splash-banner p {
+  margin-top: 50px;
+  margin-bottom: 5px;
+  color:rgba(245, 245, 219, 0.5)
+}
+
+#about-links {
+  display: inline;
+}
+#about-links a {
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  color:rgba(245, 245, 219, 0.5)
+}
+#about-links a:hover {
+  color: royalblue;
+  border: none;
 }
 
 @media screen and (max-width: 700px) {

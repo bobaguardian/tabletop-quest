@@ -17,7 +17,6 @@ const DiscussionList = ({ discussionsObj, productId }) => {
   });
 
   useEffect(() => {
-    console.log('use effect');
     dispatch(getDiscussionsForProduct(productId));
   }, [dispatch])
 
@@ -27,6 +26,20 @@ const DiscussionList = ({ discussionsObj, productId }) => {
     e.preventDefault();
     const discussionId = e.target.value;
     dispatch(removeDiscussion(discussionId));
+  }
+
+  const hideContent = (id) => {
+    const disDate = document.getElementById(`${id}-discussion-date`);
+    const actualDis = document.getElementById(`actual-discussion-${id}`);
+    disDate.style.display = 'none';
+    actualDis.style.display = 'none';
+  }
+
+  const showContent = (id) => {
+    const disDate = document.getElementById(`${id}-discussion-date`);
+    const actualDis = document.getElementById(`actual-discussion-${id}`);
+    disDate.style.display = 'block';
+    actualDis.style.display = 'block';
   }
 
   return (
@@ -39,24 +52,24 @@ const DiscussionList = ({ discussionsObj, productId }) => {
             <div>
               <h3>{User.username}</h3>
               {(sessionUser?.id === userId) ?
-                <i class="fas fa-ellipsis-h discussion-edit-delete-menu"
+                <i className="fas fa-ellipsis-h discussion-edit-delete-menu"
                   onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
                   onMouseLeave={() => setShowEditDeleteMenu(false)}>
                   {(showEditDeleteMenu && (edMenuId === id)) ? (
                     <div className='discussion-edit-delete-div'
                       onMouseEnter={() => {setShowEditDeleteMenu(true); setEdMenuId(id);}}
                       onMouseLeave={() => setShowEditDeleteMenu(false)}>
-                      <button className='edit-btn' value={id} onClick={() => {setShowEditForm(true); setEditDiscussionId(id)}}>Edit</button>
+                      <button className='edit-btn' value={id} onClick={() => {setShowEditForm(true); setEditDiscussionId(id); hideContent(id)}}>Edit</button>
                       <button className='delete-btn' value={id} onClick={handleDelete}>Delete</button>
                     </div>
                   ) : null}
                 </i>
               : null }
             </div>
-            <p className='discussion-date'>{new Date(createdAt).toLocaleString()}</p>
-            <p className='actual-discussion'>{discussion}</p>
+            <p className='discussion-date' id={`${id}-discussion-date`}>{new Date(createdAt).toLocaleString()}</p>
+            <p className='actual-discussion' id={`actual-discussion-${id}`}>{discussion}</p>
 
-            { (showEditForm && editDiscussionId === id ) ? <DiscussionForm type='update' discussionsObj={discussionsObj} discussionId={editDiscussionId} userId={userId} productId={productId} setShowEditForm={setShowEditForm}/> : null }
+            { (showEditForm && editDiscussionId === id ) ? <DiscussionForm type='update' discussionsObj={discussionsObj} discussionId={editDiscussionId} userId={userId} productId={productId} setShowEditForm={setShowEditForm} showContent={showContent}/> : null }
 
           </div>
         );

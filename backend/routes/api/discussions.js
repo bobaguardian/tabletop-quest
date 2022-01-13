@@ -90,7 +90,6 @@ router.delete('/:id', restoreUser, asyncHandler(async (req, res, next) => {
       err.errors = ['Cannot delete discussion: You are not the owner of this discussion'];
       return next(err);
     }
-    console.log(user.id, discussion.userId);
     await discussion.destroy();
     return res.json({ message: 'delete successful' });
   }

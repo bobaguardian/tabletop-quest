@@ -18,7 +18,6 @@ const ProductProfile = ({ productId, productsObj, sessionUser, onClose }) => {
 
   useEffect(() => {
     dispatch(getDiscussionsForProduct(productId));
-    console.log('products obj',productsObj);
   }, [dispatch]);
 
 

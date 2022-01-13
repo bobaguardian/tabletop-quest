@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { submitDiscussion, editDiscussion, getDiscussionsForProduct } from '../../store/discussions';
 import './DiscussionForm.css';
 
-const DiscussionForm = ({ type, discussionsObj, productId, userId, discussionId, setShowEditForm}) => {
+const DiscussionForm = ({ type, discussionsObj, productId, userId, discussionId, setShowEditForm, showContent}) => {
   const dispatch = useDispatch();
 
   let initialDiscussion = '';
@@ -43,8 +43,8 @@ const DiscussionForm = ({ type, discussionsObj, productId, userId, discussionId,
           if (data && data.errors) return setErrors(data.errors);
         });
       setShowEditForm(false);
+      showContent(discussionId);
     }
-    console.log(discussionDetails);
   }
 
 

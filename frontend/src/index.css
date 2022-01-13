@@ -75,8 +75,8 @@ h3 {
 #warrior-mouse-div img {
   width: 300px;
   border-radius: 10px;
-
 }
+
 @media screen and (max-width: 1200px) {
   #warrior-mouse-div {
     right: 8%;
