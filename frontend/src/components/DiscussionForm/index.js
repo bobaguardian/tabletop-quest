@@ -53,7 +53,7 @@ const DiscussionForm = ({ type, discussionsObj, productId, userId, discussionId,
       <ul className='errors-ul'>
         {errors.map((error, idx) => <li key={idx}>* {error} *</li>)}
       </ul>
-      <div className='form-ele' className='discussion-form-div'>
+      <div className='form-ele discussion-form-div'>
         { type === 'create' ? <label htmlFor='discussion'>What are your thoughts?</label> : null}
         <div>
           <textarea

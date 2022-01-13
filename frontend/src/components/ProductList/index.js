@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts, removeProduct } from "../../store/products";
 import './ProductList.css';
@@ -8,7 +8,6 @@ import ProductProfile from "../ProductProfile";
 
 const ProductList = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   // subscribes ProductList to state.products.entries
   const productsObj = useSelector((state) => {return state.products.entries});

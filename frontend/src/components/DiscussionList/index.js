@@ -18,7 +18,7 @@ const DiscussionList = ({ discussionsObj, productId }) => {
 
   useEffect(() => {
     dispatch(getDiscussionsForProduct(productId));
-  }, [dispatch])
+  }, [dispatch, productId])
 
 
   const handleDelete = (e) => {
