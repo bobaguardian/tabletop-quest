@@ -67,6 +67,7 @@ h3 {
 }
 
 #warrior-mouse-div h3 {
+  width: 300px;
   padding-top: 5px;
   text-align: center;
 }
@@ -92,10 +93,10 @@ h3 {
   }
 
   #warrior-mouse-div h3 {
+    width: 90%;
     font-size: 16px;
   }
 }
-
 
 @media screen and (max-width: 900px) {
   #warrior-mouse-div {

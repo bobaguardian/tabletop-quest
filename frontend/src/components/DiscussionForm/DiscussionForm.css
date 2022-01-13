@@ -1,5 +1,6 @@
 
 .discussion-form-div textarea {
+  width: 100%;
   border-radius: 4px;
   margin-right: 20px;
   margin-bottom: 15px;
