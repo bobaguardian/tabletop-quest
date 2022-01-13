@@ -1,8 +1,6 @@
 .product-list-div {
   margin-top: 50px;
   margin-left: 100px;
-  /* Change later  */
-  /* margin-right: 35%; */
   border-right: 1px solid rgb(203, 198, 191);
 }
 
@@ -102,4 +100,12 @@
 
 .edit-delete-div button:hover {
   color: red;
+}
+
+
+@media screen and (max-width: 900px) {
+  .product-list-div {
+    border: none;
+    width: 100%;
+  }
 }
