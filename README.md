@@ -11,11 +11,18 @@ Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a socia
 * [Database Schema](https://github.com/bobaguardian/tabletop-quest/wiki/Database-Schema)
 * [Frontend Routes](https://github.com/bobaguardian/tabletop-quest/wiki/Frontend-Routes)
 * [API Routes](https://github.com/bobaguardian/tabletop-quest/wiki/API-Documentation)
-* [Application Screenshots](https://github.com/bobaguardian/tabletop-quest#application-screenshots)
 * [Technologies Used](https://github.com/bobaguardian/tabletop-quest#technologies-used)
+* [Application Screenshots](https://github.com/bobaguardian/tabletop-quest#application-screenshots)
 * [Future Implementations](https://github.com/bobaguardian/tabletop-quest#future-implementations)
 * [Redux Store Tree](https://github.com/bobaguardian/tabletop-quest#redux-store-tree)
 
+## Technologies Used
+* NodeJS
+* Express
+* PostgreSQL
+* Sequelize
+* React
+* Redux
 
 ## Application Screenshots
 
@@ -50,14 +57,6 @@ Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a socia
     * Run `npm install`
     * Then Run `npm start`
 #### Awesome! Now you can navigate to http://localhost:3000 and use the application!
-
-## Technologies Used
-* NodeJS
-* Express
-* PostgreSQL
-* Sequelize
-* React
-* Redux
 
 ## Future Implementations
 * Add a search feature for products
