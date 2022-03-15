@@ -21,6 +21,7 @@
 }
 
 .product-div:hover {
+  cursor: pointer;
   background-color: rgb(249, 125, 73);
 }
 

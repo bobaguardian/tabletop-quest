@@ -28,6 +28,7 @@
 
 .submit-product-form button:hover {
   background-color:rgb(249, 125, 73);
+  cursor: pointer;
 }
 
 textarea {

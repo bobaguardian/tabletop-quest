@@ -28,6 +28,8 @@
 
 .demo-btn:hover {
   background-color:rgb(249, 125, 73);
+  cursor: pointer;
+
 }
 
 @media screen and (max-width: 900px) {
