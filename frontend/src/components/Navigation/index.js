@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -33,7 +33,7 @@ const Navigation = ({ isLoaded }) => {
         </div>
         {isLoaded && sessionLinks}
       </div>
-      <h1>Tabletop Quest</h1>
+      <h1><Link id="tabletop-quest" exact to='/'>Tabletop Quest</Link></h1>
     </nav>
   );
 }
