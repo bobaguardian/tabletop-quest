@@ -83,4 +83,5 @@
 #see-discussions-btn:hover {
   background-color:rgb(249, 125, 73);
   border-color:rgb(249, 125, 73);
+  cursor: pointer;
 }

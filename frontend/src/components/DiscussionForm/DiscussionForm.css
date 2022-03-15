@@ -20,4 +20,5 @@
 .discussion-form-div button:hover {
   background-color:rgb(249, 125, 73);
   border: 1px solid rgb(249, 125, 73);
+  cursor: pointer;
 }
