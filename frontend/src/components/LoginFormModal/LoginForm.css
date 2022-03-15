@@ -4,17 +4,13 @@
   align-items:center;
   width: 400px;
   padding: 40px;
-  background-color: beige;
-  border-radius: 7px;
+  background-color: #181A1B;
+  color: beige;
+  border-radius: 0;
+  border: 7px solid beige;
+  ;
 }
 
-#login-div h2 {
-  color: #181A1B;
-}
-
-#login-div label, #login-div input {
-  color:#181A1B;
-}
 
 #login-signup-div a {
   cursor: pointer;
@@ -62,8 +58,10 @@ input:focus {
 
 .login-btn:hover {
   background-color: rgb(76, 167, 76);
+  cursor: pointer;
 }
 
 .demo-btn:hover {
   background-color:rgb(249, 125, 73);
+  cursor: pointer;
 }
