@@ -74,6 +74,7 @@ nav button {
 #logout-btn:hover {
   background-color: rgb(249, 125, 73);
   color: beige;
+  cursor: pointer;
 }
 
 ul li{
