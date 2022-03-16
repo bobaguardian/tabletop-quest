@@ -131,7 +131,7 @@ router.get('/:id/discussions', asyncHandler(async (req, res) => {
 router.get('/search/:query', asyncHandler(async(req, res) => {
   const searchQuery = req.params.query;
   const products = await Product.findAll({
-    where: {title: { [Op.like]: '%' + searchQuery + '%'}}
+    where: {title: { [Op.iLike]: '%' + searchQuery + '%'}}
   });
   return res.json({ products });
 }))

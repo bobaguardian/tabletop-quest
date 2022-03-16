@@ -6,7 +6,6 @@ const CREATE_PRODUCT = 'products/CREATE_PRODUCT';
 const UPDATE_PRODUCT = 'products/UPDATE_PRODUCT';
 const DELETE_PRODUCT = 'products/DELETE_PRODUCT';
 const READ_ONE_PRODUCT = 'products/READ_ONE_PRODUCT';
-const READ_PRODUCTS_SEARCH = 'products/READ_PRODUCTS_SEARCH';
 
 // Action creators
 export const readProducts = (products) => {
@@ -44,13 +43,6 @@ export const readOneProduct = (id) => {
     id
   };
 }
-
-// export const readProductsSearch = (products) => {
-//   return {
-//     type: READ_PRODUCTS_SEARCH,
-//     products
-//   }
-// }
 
 // Thunk action creators
 // READ
@@ -119,8 +111,7 @@ export const getSingleProduct = (id) => async (dispatch) => {
 export const readProductsSearch = (searchQuery) => async (dispatch) => {
   const response = await csrfFetch(`/api/products/search/${searchQuery}`);
   const data = await response.json();
-  console.log(data);
-  // dispatch(readProducts(data.products));
+  dispatch(readProducts(data.products));
   return data;
 }
 
