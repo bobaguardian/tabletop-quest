@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
+import { useHistory, useLocation, } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-// import { getAllProducts } from "../../store/products";
-import { readProductsSearch } from "../../store/products";
+import { readProductsSearch, getAllProducts } from "../../store/products";
 import "./ProductSearchBar.css";
 
 const ProductSearchBar = () => {
   const dispatch = useDispatch();
-  // const productsObj = useSelector((state) => {return state.products.entries});
+  const history = useHistory();
+  const location = useLocation();
+
+  const productsObj = useSelector((state) => {return state.products.entries});
   const [searchQuery, setSearchQuery] = useState("");
 
-  // useEffect(() => {
-  //   dispatch(getAllProducts());
-  // }, [dispatch])
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [dispatch])
+
 
   const updateSearchQuery = (e) => {
     setSearchQuery(e.target.value);
   }
 
   const handleProductSearch = (e) => {
-    console.log("Search query:", searchQuery);
     dispatch(readProductsSearch(searchQuery));
+    history.push(`/products/search/${searchQuery}`);
     e.preventDefault();
     e.stopPropagation();
   }
