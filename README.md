@@ -38,6 +38,9 @@ Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a socia
 ### Discussions Section
 ![Discussions Section](https://github.com/bobaguardian/tabletop-quest/blob/main/frontend/public/images/discussions-section.JPG)
 
+### Product Search
+![Product Search Page](https://github.com/bobaguardian/tabletop-quest/blob/main/frontend/public/images/product-search.PNG)
+
 ## Local Machine Launch Instructions
 * Clone the tabletop-quest repo
 * In the `backend` folder, create a `.env` file using the `.env.example` as a template
@@ -59,7 +62,6 @@ Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a socia
 #### Awesome! Now you can navigate to http://localhost:3000 and use the application!
 
 ## Future Implementations
-* Add a search feature for products
 * Add an upvote feature for products
 
 ## Redux Store Tree
