@@ -21,17 +21,18 @@
   border: none;
   position: relative;
   top: 0.4em;
-
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   height: 2.2em;
-  padding: 5px;
+  padding: 5px 7px;;
   border: 1px solid rgba(0, 0, 0, 0.4);
-  background-color: white;
+  background-color: rgb(249, 125, 73);
+  color: white;
   transition: all 0.1s ease-in-out;
 }
 
 .search-submit:hover {
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(249, 126, 73, 0.74);
+
 }

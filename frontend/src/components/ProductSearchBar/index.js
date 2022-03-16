@@ -43,7 +43,9 @@ const ProductSearchBar = ({query}) => {
           className="search-bar"
           placeholder="Search a game by title"
         />
-        <button className='form-ele search-submit' type='submit'>Search</button>
+        <button className='form-ele search-submit' type='submit'>
+          <i className="fa-solid fa-magnifying-glass"></i>
+        </button>
       </form>
     </div>
   );
