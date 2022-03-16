@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts, removeProduct } from "../../store/products";
 import './ProductList.css';
 import { Modal } from '../../context/Modal';
+import ProductSearchBar from "../ProductSearchBar";
 import ProductProfile from "../ProductProfile";
 
 const ProductList = () => {
@@ -39,7 +40,10 @@ const ProductList = () => {
 
   return (
     <div className='product-list-div'>
-      <h2>Product List</h2>
+      <div className="header-search-bar">
+        <h2>Product List</h2>
+        <ProductSearchBar></ProductSearchBar>
+      </div>
       <ul>
         {products.map(({id, userId, title, imageSrc, description, updatedAt, createdAt}, index) => (
           <div key={`product-${id}`}  className='product-div' onClick={() => {setShowModal(true); setProfileModalId(id)}}>

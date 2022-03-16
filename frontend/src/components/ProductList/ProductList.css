@@ -29,6 +29,10 @@
   color: rgb(63, 63, 63);
 }
 
+.header-search-bar {
+  display: flex;
+}
+
 .product-detail-div h3 {
   transition: color 0.4s ease-in-out;
 }
