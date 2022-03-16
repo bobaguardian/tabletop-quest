@@ -1,6 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
+const { Op } = require('sequelize');
 
 const { Product, User, Discussion } = require('../../db/models');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -124,5 +125,16 @@ router.get('/:id/discussions', asyncHandler(async (req, res) => {
   return res.json({ discussions });
 
 }));
+
+// GET /products/search/:query
+// Gets all products that match a search query
+router.get('/search/:query', asyncHandler(async(req, res) => {
+  const searchQuery = req.params.query;
+  const products = await Product.findAll({
+    where: {title: { [Op.iLike]: '%' + searchQuery + '%'}},
+    include: User
+  });
+  return res.json({ products });
+}))
 
 module.exports = router;

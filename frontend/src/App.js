@@ -6,6 +6,7 @@ import SplashPage from './components/SplashPage';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import ProductList from './components/ProductList';
+import ProductListSearch from './components/ProductListSearch';
 import ProductForm from './components/ProductForm';
 import * as sessionActions from './store/session';
 import * as productActions from './store/products';
@@ -32,6 +33,17 @@ function App() {
             <div id='productlist-warrior-mouse'>
               <div id='product-list-div'>
                 <ProductList />
+              </div>
+              <div id='warrior-mouse-div'>
+                <img src='https://res.cloudinary.com/tabletopquest/image/upload/v1641948485/products/vector-pixel-art-isolated-cartoon-vector-id1005900692_pmfe7e.jpg' alt='warrior-mouse' />
+                <h3>Good luck on your quest!</h3>
+              </div>
+            </div>
+          </Route>
+          <Route exact path='/products/search/:query'>
+            <div id='productlist-warrior-mouse'>
+              <div id='product-list-div'>
+                <ProductListSearch />
               </div>
               <div id='warrior-mouse-div'>
                 <img src='https://res.cloudinary.com/tabletopquest/image/upload/v1641948485/products/vector-pixel-art-isolated-cartoon-vector-id1005900692_pmfe7e.jpg' alt='warrior-mouse' />

@@ -108,6 +108,13 @@ export const getSingleProduct = (id) => async (dispatch) => {
   return data;
 }
 
+export const readProductsSearch = (searchQuery) => async (dispatch) => {
+  const response = await csrfFetch(`/api/products/search/${searchQuery}`);
+  const data = await response.json();
+  dispatch(readProducts(data.products));
+  return data;
+}
+
 
 
 const initialState = { entries: {} }
