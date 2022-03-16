@@ -44,7 +44,7 @@ const ProductList = () => {
     <div className='product-list-div'>
       <div className="header-search-bar">
         <h2>Product List</h2>
-        <ProductSearchBar></ProductSearchBar>
+        <ProductSearchBar query=""></ProductSearchBar>
       </div>
       <ul>
         {products.map(({id, userId, title, imageSrc, description, updatedAt, createdAt}, index) => (

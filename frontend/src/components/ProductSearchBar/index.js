@@ -4,13 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { readProductsSearch, getAllProducts } from "../../store/products";
 import "./ProductSearchBar.css";
 
-const ProductSearchBar = () => {
+const ProductSearchBar = ({query}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
 
   const productsObj = useSelector((state) => {return state.products.entries});
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(query);
 
   useEffect(() => {
     dispatch(getAllProducts());
@@ -22,10 +22,16 @@ const ProductSearchBar = () => {
   }
 
   const handleProductSearch = (e) => {
-    dispatch(readProductsSearch(searchQuery));
-    history.push(`/products/search/${searchQuery}`);
     e.preventDefault();
     e.stopPropagation();
+    if (searchQuery === "") {
+      dispatch(getAllProducts())
+      history.push('/products');
+    } else {
+      dispatch(readProductsSearch(searchQuery));
+      history.push(`/products/search/${searchQuery}`);
+
+    }
   }
 
   return (

@@ -45,7 +45,7 @@ const ProductListSearch = () => {
     <div className='product-list-div'>
       <div className="header-search-bar">
         <h2>Search Results for "{searchQuery}"</h2>
-        <ProductSearchBar></ProductSearchBar>
+        <ProductSearchBar query={searchQuery}></ProductSearchBar>
       </div>
         {products.length > 0 ?
           <ul>
