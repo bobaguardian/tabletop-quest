@@ -31,6 +31,7 @@ const ProductSearchBar = () => {
           onChange={updateSearchQuery}
           value={searchQuery}
           className="search-bar"
+          placeholder="Search a game by title"
         />
         <button className='form-ele search-submit' type='submit'>Search</button>
       </form>
