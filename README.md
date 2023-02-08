@@ -3,8 +3,6 @@
 
 Tabletop Quest, a [Product Hunt](https://www.producthunt.com/) clone, is a social media application that allows users to browse table top games and create posts for the game products and participate in discussions of those games.
 
-[See the site live here!](https://tabletopquest.herokuapp.com/)
-
 ## Table of Contents
 * [MVP Feature List Document](https://github.com/bobaguardian/tabletop-quest/wiki/MVP-Feature-List)
 * [React Components List](https://github.com/bobaguardian/tabletop-quest/wiki/React-Components)
